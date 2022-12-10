@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <title>Wolf Creek Kennels</title>
+</head>
+<body>
+    <div id="app">
+        <div id="logo-container">
+            <img id="logo" src="{% static '/images/logo.png' %}" alt="logo">
+            <h1 id="logo-text">Wol<span id="offset">f Creek Ken</span>nels</h1>
+        </div>
+        <nav>     
+            <a href="#">Dogs</a>
+            <a href="#">Puppies</a>
+        </nav>
+        <div id="block">
+            {% block content%}
+            {% endblock %}
+        </div>
+    </div>
+    <footer id="footer">
+        <div>
+            <p>Henryetta, Oklahoma</p>
+        </div>
+        <div>          
+        </div>
+            <p>Wolf Creek Kennels</p>
+        <div>
+            <img src="{% static '/images/facebook-logo.png' %}" alt="Follow us on Facebook">
+        </div>
+    </footer>
+
+<!-- Import Ajax -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- Import Vue.js -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<!-- Import file.js -->
+<script src="{% static 'scripts/app.js' %}"></script> 
+
+<!-- Mount App -->
+<script> const mountApp = app.mount('#app') </script>
+
+</body>
+</html>            

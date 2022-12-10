@@ -1,0 +1,363 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Red+Hat+Display&display=swap');
+
+body {
+    margin: 0rem;
+    padding: 0rem;
+    background-color: black;
+    color: white;
+}
+
+#logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+#logo {
+    padding: 0rem;
+    width: 30rem;
+    -webkit-filter: drop-shadow(0 0 1px #fff)
+                    drop-shadow(0 0 2.5px #fff)
+                    drop-shadow(0 0 12px #0ff1f1)
+                    drop-shadow(0 0 15px #0ff1f1)
+                    drop-shadow(0 0 6px #0ff1f1);
+    filter: drop-shadow(0 0 1px #fff)
+            drop-shadow(0 0 2.5px #fff)
+            drop-shadow(0 0 12px #0ff1f1)
+            drop-shadow(0 0 15px #0ff1f1)
+            drop-shadow(0 0 6px #0ff1f1);
+    animation: image-flicker 3s linear infinite;
+}
+
+#logo-text {
+    font-family: 'Poppins', sans-serif;
+    animation: text-flicker 3s linear infinite;
+}
+
+#offset {
+    animation: letter-flicker 2s linear infinite;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    margin-right: 11rem;
+    margin-bottom: .5rem;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: xx-large;
+    font-family: 'Poppins', sans-serif;
+    color: #0ff1f1;   
+}
+
+nav a:hover {    
+    color: white;
+}
+
+#block {  
+    background-image: url("../images/black-background.jpg");
+    background-color: rgba(255, 255, 255, 0.050);
+    margin-inline: 10rem;
+    padding: 2rem 2rem 0rem 2rem;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: large;
+}
+
+#block h1 {
+    color: #0ff1f1;
+}
+
+#newsletter {
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #1c1c1d;
+}
+
+.medium-img {
+    width: 30rem;
+    height: 40rem;
+}
+
+#home-main-img {
+    margin-left: 2rem;
+}
+
+.image-text-side-by-side {
+    display: flex;
+    gap: 2rem;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity:0.1;
+    text-shadow: 0px 0px 29px rgb(255, 255, 255);
+  }
+  
+  2% {
+    opacity:1;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255);
+  }
+  8% {
+    opacity:0.1;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255);
+  }
+  9% {
+    opacity:1;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255);
+  }
+  12% {
+    opacity:0.1;
+    text-shadow: 0px 0px rgba(255, 255, 255);
+  }
+  20% {
+    opacity:1;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255)
+  }
+  25% {
+    opacity:0.3;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255)
+  }
+  30% {
+    opacity:1;
+    text-shadow: 0px 0px 29px rgb(255, 255, 255)
+  }
+  
+  70% {
+    opacity:0.7;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255)
+  }
+  
+  72% {
+    opacity:0.2;
+    text-shadow:0px 0px 29px rgba(255, 255, 255)
+  }
+  
+  77% {
+    opacity:.9;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255)
+  }
+  100% {
+    opacity:.9;
+    text-shadow: 0px 0px 29px rgba(255, 255, 255)
+  }
+}
+
+@keyframes letter-flicker {
+    0% {
+      opacity:0.1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    2% {
+      opacity:0.1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    4% {
+      opacity:1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    
+    
+    19% {
+      opacity:1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    21% {
+      opacity:0.1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    23% {
+      opacity:1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    
+    80% {
+      opacity:1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    83% {
+      opacity:0.4;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+    87% {
+      opacity:1;
+      text-shadow: 0px 0px 29px rgba(255, 255, 255);
+    }
+  }
+
+  @keyframes image-flicker {
+    0% {
+      opacity:0.1;
+       -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    
+    2% {
+      opacity:1;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    8% {
+      opacity:0.1;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    9% {
+      opacity:1;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    12% {
+      opacity:0.1;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    20% {
+      opacity:1;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    25% {
+      opacity:0.3;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    30% {
+      opacity:1;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    
+    70% {
+      opacity:0.7;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    
+    72% {
+      opacity:0.2;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    
+    77% {
+      opacity:.9;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+    100% {
+      opacity:.9;
+      -webkit-filter:  drop-shadow(0 0 1px #fff)
+                        drop-shadow(0 0 2.5px #fff)
+                        drop-shadow(0 0 12px #0ff1f1)
+                        drop-shadow(0 0 15px #0ff1f1)
+                        drop-shadow(0 0 6px #0ff1f1);
+        filter: drop-shadow(0 0 1px #fff)
+                drop-shadow(0 0 2.5px #fff)
+                drop-shadow(0 0 12px #0ff1f1)
+                drop-shadow(0 0 15px #0ff1f1)
+                drop-shadow(0 0 6px #0ff1f1);
+    }
+  }
