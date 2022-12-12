@@ -1,21 +1,45 @@
 {% extends 'base.html' %}
 {% block content%} 
 {% load static %} 
-    <h1>Wolf Creek Kennels breeds quality English and French Bulldogs</h1>
-    <div class="image-text-side-by-side">
-        <img class="medium-img" id="home-main-img" src="{% static '/images/dog_and_family.jpg' %}" alt="Family with their dog">
-        <p>Doggo ipsum bork fluffer doge yapper smol borking doggo with a long snoot for pats, porgo heckin angery woofer. Doge you are doing me the shock much ruin diet long doggo porgo long water shoob, heckin blep shibe. Aqua doggo corgo wow very biscit clouds woofer, pupperino very jealous pupper. What a nice floof corgo blep yapper very jealous pupper, shibe doggo heckin. Aqua doggo wrinkler mlem woofer you are doing me the shock stop it fren, sub woofer what a nice floof long woofer many pats, pupper doing me a frighten pupperino super chub. Shoob snoot lotsa pats blep, yapper. Very jealous pupper you are doin me a concern pupper, clouds. Puggo maximum borkdrive smol borking doggo with a long snoot for pats shibe borkf, puggorino very hand that feed shibe wow such tempt. Such treat you are doing me the shock the neighborhood pupper most angery pupper I have ever seen big ol pupper, borkdrive smol. Heck clouds dat tungg tho adorable doggo, doggorino pats.
+    <div id="index-heading">
+        <h1>Wolf Creek Kennels breeds quality English and French Bulldogs</h1>
+        <h2>From the family pet to the award winning show dog.</h2>
+    </div>
+    <div class="card-container">
+        <div @click="carouselLeft()" class="div-click">
+            <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+        </div>
+        {% for puppy in puppies_for_sale %}
+            {% if puppy.main_image != None %}
+                <a href='#'><div class="card">
+                    <img src="{{ puppy.main_image.url }}" alt="Puppy for sale">
+                    {% if puppy.show_name %}
+                        <p>{{ puppy.name }}</p>
+                    {% endif %}
+                    <p>{{puppy.get_sex_display}}</p>
+                    <p>{{puppy.get_breed_display}}</p>
+                    <p>Born on {{puppy.litter.birthday}}
+                    {% if puppy.description != None %}
+                        <p>{{ puppy.description }}</p>
+                    {% endif %}
+                    {% if puppy.available_for_sale %}
+                        <p>Available</p>
+                    {% endif %}
+                </div></a>
+            {% endif %}
+        {% endfor %}
+        <div @click="carouselRight()" class="div-click">
+            <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+        </div>
+        </div>
 
-            Corgo doge floofs thicc smol borking doggo with a long snoot for pats very taste wow, boof shoober blep. Waggy wags very jealous pupper heckin angery woofer boof, pupper. Wow very biscit shibe thicc maximum borkdrive yapper mlem ur givin me a spook, porgo doing me a frighten ruff clouds. Pupper what a nice floof big ol doing me a frighten shoob, pupper yapper fat boi. Heckin good boys and girls he made many woofs vvv corgo, heckin. You are doing me the shock woofer I am bekom fat heckin good boys blep, doge shooberino. shibe you are doing me the shock borking doggo. Blep shoob waggy wags long woofer noodle horse, thicc big ol pupper most angery pupper I have ever seen. He made many woofs yapper blep tungg, fluffer puggorino. Woofer pats long water shoob waggy wags I am bekom fat smol borking doggo with a long snoot for pats, ruff shoob heckin such treat. Snoot long bois long woofer shoob, noodle horse smol borking doggo with a long snoot for pats.
-            
-            very good spot extremely cuuuuuute pupperino. Borking doggo pats borkf thicc porgo most angery pupper I have ever seen pupperino, he made many woofs pupper you are doin me a concern long water shoob doggorino. Corgo pats heckin much ruin diet smol borking doggo with a long snoot for pats h*ck, doggo heckin good boys thicc. floofs maximum borkdrive you are doing me a frighten. corgo you are doing me a frighten. Ruff very jealous pupper what a nice floof heckin, long woofer wrinkler. Heckin good boys doggo you are doin me a concern pupperino, many pats much ruin diet. Doing me a frighten most angery pupper I have ever seen shoob yapper, aqua doggo porgo.
-        <p> 
-    </div> 
     <div id="newsletter">
         <h3>STAY IN THE KNOW</h3>
         <p>Want to know about upcomming litters, show results, and news about the kennel?</p>
         <p>Sign up for our newsletter.</p>
-        <input type="text" placeholder="Enter your email">
-        <button type="submit">Subscribe</button>
+        <div id="newsletter-input-button">
+            <input type="text" placeholder="Enter your email">
+            <button type="submit" @click=subscribeToNewsletter()>Subscribe</button>
+        </div>
     </div>      
 {% endblock %}
