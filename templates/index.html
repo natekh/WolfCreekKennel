@@ -2,7 +2,7 @@
 {% block content%} 
 {% load static %} 
     <div id="index-heading">
-        <h1>Wolf Creek Kennels breeds quality English and French Bulldogs</h1>
+        <h1>Wolf Creek Bulldogs breeds quality English and French Bulldogs</h1>
         <h2>From the family pet to the award winning show dog.</h2>
     </div>
     <div class="card-container">
@@ -37,9 +37,9 @@
         <h3>STAY IN THE KNOW</h3>
         <p>Want to know about upcomming litters, show results, and news about the kennel?</p>
         <p>Sign up for our newsletter.</p>
-        <div id="newsletter-input-button">
+        <form id="newsletter-input-button">
             <input type="text" placeholder="Enter your email">
             <button type="submit" @click=subscribeToNewsletter()>Subscribe</button>
-        </div>
+        </form>
     </div>      
 {% endblock %}

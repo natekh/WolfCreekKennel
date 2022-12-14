@@ -4,7 +4,8 @@ const app = Vue.createApp({
         return{
             carouselItems: [],
             currentCarouselIndex: 2,
-            carousel: {}
+            carousel: {},
+            blockElement: {}
         }
     },
     methods: {
@@ -31,7 +32,21 @@ const app = Vue.createApp({
         carouselRight(){
             this.currentCarouselIndex++
             this.getCarouselItems()        
-        }       
+        }
+        // backgroundAnimation(){
+        //     const tl = gsap.timeline({
+  
+        //         scrollTrigger: {
+        //         trigger: "#block",
+        //         pin: true,
+        //         scrub: true,
+        //         end: () => `+=${this.blockElement.offsetWidth}`
+                  
+        //       }
+              
+        //     })
+        //     tl.to(container, { duration: 1, backgroundColor: '#0000FF', ease: "none" }, 1)
+        // }       
     },
     created: function() {    
         
@@ -39,6 +54,8 @@ const app = Vue.createApp({
     mounted(){   
         this.carouselItems = document.querySelectorAll('.card')
         this.carousel = document.querySelector('.card-container')
+        // this.blockElement = document.querySelector('#block');
+        // gsap.registerPlugin(ScrollTrigger);
         this.getCarouselItems() 
     }
 })

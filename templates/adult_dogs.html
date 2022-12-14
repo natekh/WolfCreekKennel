@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %}
+        {% with adult_dogs|first as first_dog%}
+            {% if first_dog.sex == "M" %}
+                <h1>Sires</h1>
+            {% else %}
+                <h1>Dams</h1>
+            {% endif %}
+        {% endwith %}
+    {% for dog in adult_dogs%}
+        {% if dog.main_image.url != None or dog.main_image.url != "null" %}
+            <img src="{{ dog.main_image.url }}" alt="Adult Dog">
+        {% endif %}
+        {% if dog.show_name%}
+            <p>{{dog.name}}</p>
+        {% endif %}
+        {% if dog.description != None or dog.description != "" %}
+            <p>{{dog.description}}
+        {% endif %}
+        {% for image in dog.dog_images.all %}
+            <img src="{{ image.image.url }}" alt="Adult Dog">
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

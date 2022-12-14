@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %}
+    <div id="faq-heading">
+        <h1>Frequently Asked Questions</h1>
+    </div>
+     {% for faq in faqs %}
+        <h3>{{ faq.question }}</h3>
+        <p>{{ faq.answer }}</p>
+     {% endfor %}
+{% endblock %}

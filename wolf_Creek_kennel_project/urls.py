@@ -21,7 +21,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index")
+    path('', views.index, name="index"),
+    path('sires/', views.sires, name="sires"),
+    path('dams/', views.dams, name="dams"),
+    path('nursery/', views.nursery, name="nursery"),
+    path('gallery/', views.gallery, name="gallery"),
+    path('aboutTheKennel/', views.about_the_kennel, name="about_the_kennel"),
+    path('contactUs/', views.contact_us, name="contact_us"),
+    path('faq/', views.faq, name="faq")
 ]
 
 if settings.DEBUG:

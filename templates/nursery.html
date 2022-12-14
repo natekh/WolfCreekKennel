@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %} 
+    {% for puppy in puppies%}
+        <p>{{puppy}}</p>
+    {% endfor %}
+{% endblock %}

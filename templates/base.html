@@ -7,25 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
-    <title>Wolf Creek Kennels</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <title>Wolf Creek Bulldogs</title>
 </head>
 <body>
     <div id="app">
         <div id="logo-container">
             {% comment %} <a href={% url 'index' %}><img id="logo" src="{% static '/images/logo.png' %}" alt="logo"></a> {% endcomment %}
             <a href={% url 'index' %}><img id="logo" src="{% static '/images/logo2.png' %}" alt="logo"></a>
-            <a href={% url 'index' %}><h1 id="logo-text">Wol<span id="offset">f Creek Ken</span>nels</h1></a>
+            <a href={% url 'index' %}><h1 id="logo-text">Wol<span id="offset">f Creek Bull</span>dogs</h1></a>
         </div>
-        <nav>     
-            <a href="#">Dogs</a>
-            <p>|</p>
-            <a href="#">Puppies</a>
-            <p>|</p>
-            <a href='#'>About the Kennel</a>
-            <p>|</p>
-            <a href='#'>Contact Us</a>
-            <p>|</p>
-            <a href='#'>FAQ</a>
+        <nav>   
+            <div id="nav1">  
+                <a href={% url 'sires' %}>Sires</a>
+                <p>|</p>
+                <a href={% url 'dams' %}>Dams</a>
+                <p>|</p>
+                <a href={% url 'nursery' %}>Nursery</a>
+            {% comment %} <p>|</p>  {% endcomment %}
+            </div>   
+            <div id="nav2">    
+                <a href={% url 'gallery' %}>Gallery</a>
+                <p>|</p>
+                <a href={% url 'about_the_kennel' %}>About the Kennel</a>
+                <p>|</p>
+                <a href={% url 'contact_us' %}>Contact Us</a>
+                <p>|</p>
+                <a href={% url 'faq' %}>FAQ</a>
+            </div>
         </nav>
         <div id="block">
             {% block content%}
@@ -34,7 +43,7 @@
     </div>
     <footer id="footer">
         <div id="footer-text">
-            <p>Wolf Creek Kennels</p>
+            <p>Wolf Creek Bulldogs</p>
             <p>Henryetta, Oklahoma</p>          
         </div>
         <a href="#"><img src="{% static '/images/facebook-logo.png' %}" alt="Follow us on Facebook"></a>
