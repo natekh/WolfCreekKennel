@@ -28,7 +28,10 @@ urlpatterns = [
     path('gallery/', views.gallery, name="gallery"),
     path('aboutTheKennel/', views.about_the_kennel, name="about_the_kennel"),
     path('contactUs/', views.contact_us, name="contact_us"),
-    path('faq/', views.faq, name="faq")
+    path('contactUs/<int:pk>/', views.contact_us_about_puppy, name="contact_us_about_puppy"),
+    path('faq/', views.faq, name="faq"),
+    path('puppy/<int:pk>/', views.puppy_detail_sale, name="puppy_detail"),
+    path('dog/<int:pk>/', views.adult_dog_detail, name="adult_dog_detail")
 ]
 
 if settings.DEBUG:

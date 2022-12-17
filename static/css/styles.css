@@ -155,30 +155,33 @@ nav a:hover {
 }
 
 .card-container {
-    margin-inline: 12rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    margin-inline: 12rem;
+    padding-block: 3rem;
     gap: 3rem;
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.74);
+.card, .current-card, .upcoming-card, .past-card {
+    background: rgb(6,42,51);
+    background: linear-gradient(270deg, rgba(6,42,51,1) 0%, rgba(0,0,0,1) 42%);
     box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
             1px 2px 4px 0px rgba(0,255,255,0.7),
             2px 4px 8px 0px rgba(0,255,255,0.7),
             2px 4px 16px 0px rgba(0,255,255,0.7);
-    border-radius: 10%;
-    padding: 3rem;
-    text-decoration: none;
-    color: white;
-    display: none;
+    border-radius: 3%;
+    padding: 3rem;  
 }
 
-.card:hover{
+.card a, .current-card a, .upcoming-card a, .past-card a {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+.card:hover, .current-card:hover, .upcoming-card:hover, .past-card:hover{
+    cursor: pointer;
     transform: scale(1.05);
     box-shadow: 0px 1.5px 2.5px 0.5px rgba(0,255,255,0.7),
             1.5px 2.5px 4.5px 0.5px rgba(0,255,255,0.7),
@@ -186,10 +189,10 @@ nav a:hover {
             2.5px 4.5px 16.5px 0.5px rgba(0,255,255,0.7);
 }
 
-.card img{
+.card img, .current-card img, .upcoming-card img, .past-card img{
     width: 15rem;
-    height: 15rem;
-    border-radius: 10%;
+    /* height: 15rem; */
+    border-radius: 3%;
 }
 
 .left-arrow, .right-arrow {
@@ -235,6 +238,15 @@ nav a:hover {
     font-family: 'Poppins', sans-serif;
 }
 
+.a-button {
+  color: white;
+  background-color: #00b8b8;
+  width: 15rem;
+  font-size: large;
+  font-family: 'Poppins', sans-serif;
+  margin-block: 2rem;
+}
+
 #contact-us-form textarea {
     font-size: x-large;
 }
@@ -260,10 +272,69 @@ nav a:hover {
     text-align: center;
 }
 
-#faq-heading {
-    text-align: center;
+#contact-us-text h1{
+  color: #0ff1f1
 }
 
+.heading {
+    text-align: center;
+    color: #0ff1f1
+}
+
+.main-image {
+  width: 50rem;
+  margin-top: 4rem;
+  box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
+            1px 2px 4px 0px rgba(0,255,255,0.7),
+            2px 4px 8px 0px rgba(0,255,255,0.7),
+            2px 4px 16px 0px rgba(0,255,255,0.7);
+}
+
+.dog-detail-container {
+  display: flex;
+  gap: 3rem;
+}
+
+.dog-detail-text {
+  margin: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: x-large;
+}
+
+.detail-name {
+  color: #0ff1f1
+}
+
+.description {
+  margin-block: 4rem;
+  text-align: center;
+  font-size: x-large;
+}
+
+.image-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-inline: 12rem;
+  margin-block: 6rem;
+}
+
+.image-carousel-image img{
+  width: 15rem;
+  box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
+            1px 2px 4px 0px rgba(0,255,255,0.7),
+            2px 4px 8px 0px rgba(0,255,255,0.7),
+            2px 4px 16px 0px rgba(0,255,255,0.7);
+}
+
+.image-carousel-image img:hover {
+  transform: scale(2);
+}
 
 #footer {
     display: flex;

@@ -6,31 +6,32 @@
         <h2>From the family pet to the award winning show dog.</h2>
     </div>
     <div class="card-container">
-        <div @click="carouselLeft()" class="div-click">
-            <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-        </div>
+        {% if puppies_for_sale|length > 3%}
+            <div @click="carouselLeft('general')" class="div-click">
+                <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+            </div>
+        {% endif %}
         {% for puppy in puppies_for_sale %}
-            {% if puppy.main_image != None %}
-                <a href='#'><div class="card">
+            {% if puppy.main_image.url != None %}
+                <div class="card"><a href="{% url 'puppy_detail' puppy.pk %}">
                     <img src="{{ puppy.main_image.url }}" alt="Puppy for sale">
                     {% if puppy.show_name %}
                         <p>{{ puppy.name }}</p>
                     {% endif %}
                     <p>{{puppy.get_sex_display}}</p>
                     <p>{{puppy.get_breed_display}}</p>
-                    <p>Born on {{puppy.litter.birthday}}
-                    {% if puppy.description != None %}
-                        <p>{{ puppy.description }}</p>
-                    {% endif %}
+                    <p>Born on {{puppy.birthday}}</p>
                     {% if puppy.available_for_sale %}
                         <p>Available</p>
                     {% endif %}
-                </div></a>
+                </a></div>
             {% endif %}
         {% endfor %}
-        <div @click="carouselRight()" class="div-click">
-            <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
-        </div>
+        {% if puppies_for_sale|length > 3%}
+            <div @click="carouselRight('general')" class="div-click">
+                <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+            </div>
+        {% endif %}
         </div>
 
     <div id="newsletter">

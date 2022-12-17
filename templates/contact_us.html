@@ -23,8 +23,17 @@
                     <input type="email" id="email">
                 </div>
                 <div class="form-textbox">
-                    <label for="textbox">What can we help you with?*</label>
-                    <textarea id="textbox" rows="15" cols="50"></textarea>
+                    {% if puppy != None %}
+                        <label for="textbox">What can we help you with?*</label>
+                        {% if puppy.show_name %}
+                            <textarea id="textbox" rows="15" cols="50">Hi, I'm interested in purchasing {{puppy.name}}.</textarea>
+                        {% else %}
+                            <textarea id="textbox" rows="15" cols="50">Hi, I'm interested in the purchasing the puppy from /puppies/{{puppy.pk}}.</textarea>
+                        {% endif %}
+                    {% else %}
+                        <label for="textbox">What can we help you with?*</label>
+                        <textarea id="textbox" rows="15" cols="50"></textarea>                        
+                    {% endif %}
                 </div>
                 <button type=Submit>Submit</button>
             </div>

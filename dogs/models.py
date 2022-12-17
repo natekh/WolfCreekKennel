@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.core.exceptions import ValidationError
 
 class Litter(models.Model):
     title = models.CharField(max_length=500)
@@ -7,9 +8,16 @@ class Litter(models.Model):
     father = models.ForeignKey("Dog", related_name="father", on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
     main_image = models.ImageField(upload_to='images/', null=True, blank=True)
+    coming_soon = models.BooleanField(default=False)
+    due_date = models.DateField(null=True, blank=True, default=None)
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        super().clean()
+        if not self.coming_soon and self.due_date is not None:
+            raise ValidationError('Due date is only allowed if coming soon is true.')
 
 class Dog(models.Model):
     litter = models.ForeignKey(Litter, related_name="dogs", on_delete=models.CASCADE, null=True, blank=True)

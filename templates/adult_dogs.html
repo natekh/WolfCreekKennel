@@ -3,23 +3,53 @@
 {% load static %}
         {% with adult_dogs|first as first_dog%}
             {% if first_dog.sex == "M" %}
+            <div class="heading">
                 <h1>Sires</h1>
+            </div>
             {% else %}
+            <div class="heading">
                 <h1>Dams</h1>
+            </div>
             {% endif %}
         {% endwith %}
-    {% for dog in adult_dogs%}
-        {% if dog.main_image.url != None or dog.main_image.url != "null" %}
-            <img src="{{ dog.main_image.url }}" alt="Adult Dog">
-        {% endif %}
-        {% if dog.show_name%}
-            <p>{{dog.name}}</p>
-        {% endif %}
-        {% if dog.description != None or dog.description != "" %}
-            <p>{{dog.description}}
-        {% endif %}
-        {% for image in dog.dog_images.all %}
-            <img src="{{ image.image.url }}" alt="Adult Dog">
-        {% endfor %}
-    {% endfor %}
+
+        <div class="card-container">
+            {% if adult_dogs|length > 3%}
+                <div @click="carouselLeft('general')" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+            {% for dog in adult_dogs %}
+                <div class="card"><a href="{% url 'adult_dog_detail' dog.pk %}">
+                    {% if dog.main_image.url != None %}
+                        <img src="{{ dog.main_image.url }}" alt="Dog">
+                    {% endif %}
+                    {% if dog.show_name %}
+                        <p>{{ dog.name }}</p>
+                    {% endif %}
+                    <p>{{dog.get_sex_display}}</p>
+                    <p>{{dog.get_breed_display}}</p>
+                    {% for age in ages %}
+                        {% if dog.pk == age.pk %}
+                            {% if age.age > 1 or age.age == 0 %}
+                                <p>Age: {{age.age}} years old</p>
+                            {% else %}
+                                <p>Age: {{age.age}} year old</p>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if puppy.description != None %}
+                        <p>{{ puppy.description }}</p>
+                    {% endif %}
+                    {% if puppy.available_for_sale %}
+                        <p>Available</p>
+                    {% endif %}
+                </a></div>
+            {% endfor %}
+            {% if adult_dogs|length > 3%}
+                <div @click="carouselRight('general')" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+            </div>
 {% endblock %}
