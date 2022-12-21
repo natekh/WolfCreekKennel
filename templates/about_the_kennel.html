@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %} 
+    <div class="heading"> 
+        <h1>About the Kennel</h1>
+    </div>
+    <div id="about-the-kennel">
+    <div>
+    <img id="about-the-kennel-hero" src="{% static '/images/bulldog.jpg' %}" alt="Bulldog">
+    </div>
+    <div id="about-the-kennel-text">
+        <p>Wolf Creek Bulldogs is a kennel located an hour outside of Tulsa, Oklahoma. We pride ourselves
+            in breeding quality English and French Bulldogs. We breed dogs according to AKC standards
+            and produce champion show dogs. These dogs can compete in the show ring and make great
+            companions in the home.</p>
+    </div>
+    </div>
+{% endblock %}

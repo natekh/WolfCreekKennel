@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %}
+    <div class="heading"> 
+        <h1>Nursery</h1>
+    </div>
+    <div>
+        {% if current|length > 0 %}
+        <h2 class="subheader">Current Litters</h1>
+        {% endif %}
+        <div class="card-container">
+            {% if current|length > 3%}
+                <div @click="carouselLeft('current')" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+            {% for litter in current %}
+                <div class="current-card"><a href="{% url 'litter_detail' litter.pk %}">
+                    {% if litter.main_image.url != None %}
+                        <img src="{{ litter.main_image.url }}" alt="Litter">
+                    {% endif %}
+                    <p>{{litter.title}}</p>
+                    <p>{{litter.mother}}</p>
+                    <p>{{litter.father}}</p>
+                    <p>{{litter.birthday.dogs|first}}</p>
+                </a></div>
+            {% endfor %}
+            {% if current|length > 3%}
+                <div @click="carouselRight('current')" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        {% if coming_soon|length > 0%}
+            <h2 class="subheader">Upcoming Litters</h1>
+        {% endif %}
+        <div class="card-container">
+            {% if coming_soon|length > 3%}
+                <div @click="carouselLeft('upcoming')" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+            {% for litter in coming_soon %}
+                <div class="upcoming-card"><a href="{% url 'litter_detail' litter.pk %}">
+                    {% if litter.main_image.url != None %}
+                        <img src="{{ litter.main_image.url }}" alt="Litter">
+                    {% endif %}
+                    <p>{{litter.title}}</p>
+                    <p>{{litter.mother}}</p>
+                    <p>{{litter.father}}</p>
+                    <p>{{litter.due_date}}</p>
+                </a></div>
+            {% endfor %}
+            {% if coming_soon|length > 3%}
+                <div @click="carouselRight('upcoming')" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        {% if past_litters|length > 0%}
+            <h2 class="subheader">Past Litters</h1>   
+        {% endif %} 
+        <div class="card-container">
+            {% if past_litters|length > 3%}
+                <div @click="carouselLeft('past')" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+            {% for litter in past_litters %}
+                <div class="past-card"><a href="{% url 'litter_detail' litter.pk %}">
+                    {% if litter.main_image.url != None %}
+                        <img src="{{ litter.main_image.url }}" alt="Litter">
+                    {% endif %}
+                    <p>{{litter.title}}</p>
+                    <p>{{litter.mother}}</p>
+                    <p>{{litter.father}}</p>
+                    <p>{{litter.birthday.dogs|first}}</p>
+                </a></div>
+            {% endfor %}
+            {% if past_litters|length > 3%}
+                <div @click="carouselRight('past')" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

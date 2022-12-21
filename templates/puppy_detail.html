@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %}
+    {% comment %} <div class="heading">
+        <h1></h1>
+    </div> {% endcomment %}
+    <div class="dog-detail-container">
+        <div>
+            {% if puppy.main_image.url != None %}
+                <img class="main-image" src="{{puppy.main_image.url}}" alt="Puppy">
+            {% endif %}
+        </div>
+        <div class="dog-detail-text">
+            {% if puppy.show_name %}
+                <h2 class="detail-name">{{puppy.name}}</h2>
+            {% endif %}
+            <p>{{puppy.get_sex_display}}</p>           
+            <p>{{puppy.get_breed_display}}</p>
+            <p>Born on {{puppy.birthday}}</p>
+        </div>
+    </div>
+    {% if puppy.description != None %}
+        <p class="description">{{puppy.description}}</p>
+    {% endif %}
+    <div class="image-carousel">
+        {% if puppy.dog_images.all|length > 4  %}
+            <div @click="imageCarouselLeft()" class="div-click">
+                <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+            </div>
+        {% endif %}
+            {% for image in puppy.dog_images.all %}       
+                <div class="image-carousel-image">
+                    <img src="{{ image.image.url }}" alt="Additional puppy photo">
+                </div>
+            {% endfor %}
+        {% if puppy.dog_images.all|length > 4 %}
+            <div @click="imageCarouselRight()" class="div-click">
+                <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -16,8 +16,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from dogs import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index")
+    path('', views.index, name="index"),
+    path('sires/', views.sires, name="sires"),
+    path('dams/', views.dams, name="dams"),
+    path('nursery/', views.nursery, name="nursery"),
+    path('gallery/', views.gallery, name="gallery"),
+    path('aboutTheKennel/', views.about_the_kennel, name="about_the_kennel"),
+    path('contactUs/', views.contact_us, name="contact_us"),
+    path('contactUs/<int:pk>/', views.contact_us_about_puppy, name="contact_us_about_puppy"),
+    path('faq/', views.faq, name="faq"),
+    path('available_puppy/<int:pk>/', views.puppy_detail_sale, name="available_puppy_detail"),
+    path('puppy/<int:pk>/', views.puppy_detail, name="puppy_detail"),
+    path('dog/<int:pk>/', views.adult_dog_detail, name="adult_dog_detail"),
+    path('litter/<int:pk>/', views.litter_detail, name="litter_detail")
 ]
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

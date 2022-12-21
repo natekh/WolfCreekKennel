@@ -6,18 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <title>Wolf Creek Kennels</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> {% endcomment %}
+    <title>Wolf Creek Bulldogs</title>
 </head>
 <body>
     <div id="app">
         <div id="logo-container">
-            <img id="logo" src="{% static '/images/logo.png' %}" alt="logo">
-            <h1 id="logo-text">Wol<span id="offset">f Creek Ken</span>nels</h1>
+            {% comment %} <a href={% url 'index' %}><img id="logo" src="{% static '/images/logo.png' %}" alt="logo"></a> {% endcomment %}
+            <a href={% url 'index' %}><img id="logo" src="{% static '/images/logo2.png' %}" alt="logo"></a>
+            <a href={% url 'index' %}><h1 id="logo-text">Wol<span id="offset">f Creek Bull</span>dogs</h1></a>
         </div>
-        <nav>     
-            <a href="#">Dogs</a>
-            <a href="#">Puppies</a>
+        <nav>   
+            <div id="nav1">  
+                <a href={% url 'sires' %}>Sires</a>
+                <p>|</p>
+                <a href={% url 'dams' %}>Dams</a>
+                <p>|</p>
+                <a href={% url 'nursery' %}>Nursery</a>
+                <p>|</p>
+                <a href={% url 'gallery' %}>Gallery</a>
+            </div>   
+            <div id="nav2">                  
+                <a href={% url 'about_the_kennel' %}>About the Kennel</a>
+                <p>|</p>
+                <a href={% url 'contact_us' %}>Contact Us</a>
+                <p>|</p>
+                <a href={% url 'faq' %}>FAQ</a>
+            </div>
         </nav>
         <div id="block">
             {% block content%}
@@ -25,15 +42,11 @@
         </div>
     </div>
     <footer id="footer">
-        <div>
-            <p>Henryetta, Oklahoma</p>
+        <div id="footer-text">
+            <p>Wolf Creek Bulldogs</p>
+            <p>Henryetta, Oklahoma</p>          
         </div>
-        <div>          
-        </div>
-            <p>Wolf Creek Kennels</p>
-        <div>
-            <img src="{% static '/images/facebook-logo.png' %}" alt="Follow us on Facebook">
-        </div>
+        <a href="#"><img src="{% static '/images/facebook-logo.png' %}" alt="Follow us on Facebook"></a>
     </footer>
 
 <!-- Import Ajax -->
