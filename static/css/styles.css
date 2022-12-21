@@ -247,6 +247,14 @@ nav a:hover {
   margin-block: 2rem;
 }
 
+.b-button {
+  color: white;
+  background-color: #00b8b8;
+  width: 10rem;
+  font-size: large;
+  font-family: 'Poppins', sans-serif;
+}
+
 #contact-us-form textarea {
     font-size: x-large;
 }
@@ -334,6 +342,35 @@ nav a:hover {
 
 .image-carousel-image img:hover {
   transform: scale(2);
+}
+
+#about-the-kennel {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+#about-the-kennel-hero {
+  width: 30rem;
+  box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
+            1px 2px 4px 0px rgba(0,255,255,0.7),
+            2px 4px 8px 0px rgba(0,255,255,0.7),
+            2px 4px 16px 0px rgba(0,255,255,0.7);
+}
+
+#about-the-kennel-text {
+  font-size: x-large;
+  margin-inline: 6rem;
+}
+
+.father, .mother {
+  text-align: center;
+}
+
+.subheader {
+  text-align: center;
+  margin-top: 4rem;
 }
 
 #footer {

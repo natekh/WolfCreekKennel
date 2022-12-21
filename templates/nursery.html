@@ -6,7 +6,7 @@
     </div>
     <div>
         {% if current|length > 0 %}
-        <h2>Current Litters</h1>
+        <h2 class="subheader">Current Litters</h1>
         {% endif %}
         <div class="card-container">
             {% if current|length > 3%}
@@ -15,7 +15,7 @@
                 </div>
             {% endif %}
             {% for litter in current %}
-                <div class="current-card"><a href="#">
+                <div class="current-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
                         <img src="{{ litter.main_image.url }}" alt="Litter">
                     {% endif %}
@@ -34,7 +34,7 @@
     </div>
     <div>
         {% if coming_soon|length > 0%}
-            <h2>Upcoming Litters</h1>
+            <h2 class="subheader">Upcoming Litters</h1>
         {% endif %}
         <div class="card-container">
             {% if coming_soon|length > 3%}
@@ -43,7 +43,7 @@
                 </div>
             {% endif %}
             {% for litter in coming_soon %}
-                <div class="upcoming-card"><a href="#">
+                <div class="upcoming-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
                         <img src="{{ litter.main_image.url }}" alt="Litter">
                     {% endif %}
@@ -62,7 +62,7 @@
     </div>
     <div>
         {% if past_litters|length > 0%}
-            <h2>Past Litters</h1>   
+            <h2 class="subheader">Past Litters</h1>   
         {% endif %} 
         <div class="card-container">
             {% if past_litters|length > 3%}
@@ -71,7 +71,7 @@
                 </div>
             {% endif %}
             {% for litter in past_litters %}
-                <div class="past-card"><a href="#">
+                <div class="past-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
                         <img src="{{ litter.main_image.url }}" alt="Litter">
                     {% endif %}

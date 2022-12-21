@@ -31,19 +31,15 @@
                     <p>{{dog.get_breed_display}}</p>
                     {% for age in ages %}
                         {% if dog.pk == age.pk %}
-                            {% if age.age > 1 or age.age == 0 %}
-                                <p>Age: {{age.age}} years old</p>
-                            {% else %}
-                                <p>Age: {{age.age}} year old</p>
-                            {% endif %}
+                            <p>Age: {{age.age}}</p>
                         {% endif %}
                     {% endfor %}
-                    {% if puppy.description != None %}
+                    {% comment %} {% if puppy.description != None %}
                         <p>{{ puppy.description }}</p>
                     {% endif %}
                     {% if puppy.available_for_sale %}
                         <p>Available</p>
-                    {% endif %}
+                    {% endif %} {% endcomment %}
                 </a></div>
             {% endfor %}
             {% if adult_dogs|length > 3%}

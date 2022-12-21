@@ -2,6 +2,36 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404
 from .models import Dog, Litter, Dog_Image, Litter_Image, Dog_Video, Litter_Video, Misc_Image, Misc_Video, FAQ
 
+def get_age(dog_birthday):
+    now = datetime.now().date()
+    age_in_days = (now - dog_birthday).days
+    age_in_years = age_in_days // 365
+    age_in_months = age_in_days // 30
+    age_in_weeks = age_in_days // 7
+    if age_in_years != 0:
+        if age_in_years == 1:
+            return f"{age_in_years} year"
+        else:
+            return f"{age_in_years} years"
+        
+    if age_in_months != 0:
+        if age_in_months == 1:
+            return f"{age_in_months} month"
+        else:
+            return f"{age_in_months} months"
+
+    if age_in_weeks != 0:
+        if age_in_weeks == 1:
+            return f"{age_in_weeks} week"
+        else:
+            return f"{age_in_weeks} weeks"
+
+    if age_in_days == 1:
+        return f"{age_in_days} day"
+    else:
+        return f"{age_in_days} days"
+        
+
 def index(request):
     dogs = Dog.objects.all()
     puppies_for_sale = []
@@ -15,10 +45,9 @@ def sires(request):
     dogs = Dog.objects.all()   
     sires = []
     ages = []
-    now = datetime.now().date()
     for dog in dogs:
         if not dog.puppy and dog.sex == 'M':           
-            age = (now - dog.birthday).days // 365
+            age = get_age(dog.birthday)
             ages.append({'pk': dog.pk, 'age': age})
             sires.append(dog)
     context = {'adult_dogs': sires, 'ages': ages}
@@ -28,10 +57,9 @@ def dams(request):
     dogs = Dog.objects.all()
     dams = []
     ages = []
-    now = datetime.now().date()
     for dog in dogs:
         if not dog.puppy and dog.sex == 'F':
-            age = (now - dog.birthday).days // 365
+            age = get_age(dog.birthday)
             ages.append({'pk': dog.pk, 'age': age})
             dams.append(dog)
     context = {'adult_dogs': dams, 'ages': ages}
@@ -93,9 +121,18 @@ def puppy_detail_sale(request, pk):
     context = {'puppy': puppy}
     return render(request, 'puppy_detail_sale.html', context)
 
+def puppy_detail(request, pk):
+    puppy = get_object_or_404(Dog, id=pk)
+    context = {'puppy': puppy}
+    return render(request, 'puppy_detail.html', context)
+
 def adult_dog_detail(request, pk):
     dog = get_object_or_404(Dog, id=pk)
-    now = datetime.now().date()
-    age = (now - dog.birthday).days // 365
+    age = get_age(dog.birthday)
     context = {'dog': dog, 'age': age}
     return render(request, 'adult_dog_detail.html', context)
+
+def litter_detail(request, pk):
+    litter = get_object_or_404(Litter, id=pk)
+    context = {'litter': litter}
+    return render(request, 'litter_detail.html', context)

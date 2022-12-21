@@ -13,7 +13,7 @@
         {% endif %}
         {% for puppy in puppies_for_sale %}
             {% if puppy.main_image.url != None %}
-                <div class="card"><a href="{% url 'puppy_detail' puppy.pk %}">
+                <div class="card"><a href="{% url 'available_puppy_detail' puppy.pk %}">
                     <img src="{{ puppy.main_image.url }}" alt="Puppy for sale">
                     {% if puppy.show_name %}
                         <p>{{ puppy.name }}</p>
@@ -40,7 +40,7 @@
         <p>Sign up for our newsletter.</p>
         <form id="newsletter-input-button">
             <input type="text" placeholder="Enter your email">
-            <button type="submit" @click=subscribeToNewsletter()>Subscribe</button>
+            <button class="b-button" type="submit" @click=subscribeToNewsletter()>Subscribe</button>
         </form>
     </div>      
 {% endblock %}

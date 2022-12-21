@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content%} 
+{% load static %} 
+    <div class="heading">
+        <h1>{{litter.title}}</h1>
+    </div>
+
+    <div class="card-container">
+        <div class="mother">
+            <h2>Mother</h2>
+            <div class="card"><a href="{% url 'adult_dog_detail' litter.mother.pk %}">
+                {% if litter.mother.main_image.url != None %}
+                    <img src="{{ litter.mother.main_image.url }}" alt="Litter mother">
+                {% endif %}
+                {% if litter.mother.show_name %}
+                    <p>{{ litter.mother.name }}</p>
+                {% endif %}
+                <p>{{litter.mother.get_sex_display}}</p>
+                <p>{{litter.mother.get_breed_display}}</p>
+            </a></div>
+        </div>
+        <div class="father">
+            <h2>Father</h2>
+            <div class="card"><a href="{% url 'adult_dog_detail' litter.father.pk %}">
+                {% if litter.father.main_image.url != None %}
+                    <img src="{{ litter.father.main_image.url }}" alt="Litter father">
+                {% endif %}
+                {% if litter.father.show_name %}
+                    <p>{{ litter.father.name }}</p>
+                {% endif %}
+                <p>{{litter.father.get_sex_display}}</p>
+                <p>{{litter.father.get_breed_display}}</p>
+            </a></div>
+        </div>
+    </div>
+    {%if litter.dogs|length > 0 %}
+        <h2 class="subheader">Puppies</h2>
+    {% endif %}
+
+    <div class="card-container">
+        {% if litter.dogs|length > 3%}
+            <div @click="carouselLeft('general')" class="div-click">
+                <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+            </div>
+        {% endif %}
+        {% for puppy in litter.dogs.all %}
+            {% if puppy.main_image.url != None %}
+                <div class="card">
+                    {% if puppy.available_for_sale %}
+                        <a href="{% url 'available_puppy_detail' puppy.pk %}">
+                    {% else %}
+                        <a href="{% url 'puppy_detail' puppy.pk %}">
+                    {% endif %}
+                    <img src="{{ puppy.main_image.url }}" alt="Puppy for sale">
+                    {% if puppy.show_name %}
+                        <p>{{ puppy.name }}</p>
+                    {% endif %}
+                    <p>{{puppy.get_sex_display}}</p>
+                    <p>{{puppy.get_breed_display}}</p>
+                    <p>Born on {{puppy.birthday}}</p>
+                    {% if puppy.available_for_sale %}
+                        <p>Available</p>
+                    {% endif %}
+                </a></div>
+            {% endif %}
+        {% endfor %}
+        {% if litter.dogs|length > 3%}
+            <div @click="carouselRight('general')" class="div-click">
+                <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+            </div>
+        {% endif %}
+        </div>
+
+        <div class="image-carousel">
+            {% if litter.litter_images.all|length > 4  %}
+                <div @click="imageCarouselLeft()" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+                {% for image in litter.litter_images.all %}       
+                    <div class="image-carousel-image">
+                        <img src="{{ image.image.url }}" alt="Additional puppy photo">
+                    </div>
+                {% endfor %}
+            {% if litter.litter_images.all|length > 4 %}
+                <div @click="imageCarouselRight()" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>
+    
+    
+{% endblock %}

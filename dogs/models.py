@@ -51,7 +51,7 @@ class Litter_Image(models.Model):
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return f"{self.puppy_litter.name}: {self.name}"
+        return f"{self.puppy_litter.title}: {self.name}"
 
 class Dog_Video(models.Model):
     dog = models.ForeignKey(Dog, related_name="dog_videos", on_delete=models.CASCADE) 
