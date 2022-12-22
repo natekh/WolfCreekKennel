@@ -147,16 +147,16 @@ const app = Vue.createApp({
                 method: 'post',
                 url: 'https://api.emailjs.com/api/v1.0/email/send',
                 data: {
-                    'service_id': service_id,
-                    'template_id': template_id,
-                    'user_id': user_id,
+                    'service_id': process.env.service_id,
+                    'template_id': process.env.template_id,
+                    'user_id': process.env.user_id,
                     'template_params': {
                         'from_name': `${this.email.first_name} ${this.email.last_name}`,
                         'to_name': 'Kyle',
                         'message': this.email.message,
                         'reply_to': this.email.reply_to
                     },
-                    'accessToken': accessToken
+                    'accessToken': process.env.accessToken
                 }
             }).then(response => {
                 console.log(response)
