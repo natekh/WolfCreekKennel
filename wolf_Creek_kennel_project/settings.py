@@ -25,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['django_key'] # Used with Heroku
 # SECRET_KEY = django_key
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
