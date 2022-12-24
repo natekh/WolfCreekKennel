@@ -25,14 +25,14 @@
                 <div class="form-textbox">
                     {% if puppy != None %}
                         <label for="textbox">What can we help you with?*</label>
-                        {% if puppy.show_name %}
-                            <textarea id="textbox" rows="15" cols="50" v-model="email.message">Hi, I'm interested in purchasing {{puppy.name}}.</textarea>
+                        {% if puppy.show_name %} {% comment %} v-model="email.message {% endcomment %}
+                            <textarea id="textbox" rows="15" cols="50">Hi, I'm interested in purchasing {{puppy.name}}.</textarea>
                         {% else %}
-                            <textarea id="textbox" rows="15" cols="50" v-model="email.message">Hi, I'm interested in the purchasing the puppy from /puppies/{{puppy.pk}}.</textarea>
+                            <textarea id="textbox" rows="15" cols="50">Hi, I'm interested in the purchasing the puppy from /puppies/{{puppy.pk}}.</textarea>
                         {% endif %}
                     {% else %}
                         <label for="textbox">What can we help you with?*</label>
-                        <textarea id="textbox" rows="15" cols="50" v-model="email.message"></textarea>                        
+                        <textarea id="textbox" rows="15" cols="50"></textarea>                        
                     {% endif %}
                 </div>
                 <button type="button" @click="sendEmail()">Submit</button>

@@ -5,7 +5,7 @@
         <h1>Frequently Asked Questions</h1>
     </div>
      {% for faq in faqs %}
-        <h3>{{ faq.question }}</h3>
-        <p>{{ faq.answer }}</p>
+        <h3 class="faq">{{ faq.question }}</h3>
+        <p class="faq">{{ faq.answer }}</p>
      {% endfor %}
 {% endblock %}

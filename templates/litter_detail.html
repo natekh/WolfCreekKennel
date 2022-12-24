@@ -7,7 +7,7 @@
 
     <div class="card-container">
         <div class="mother">
-            <h2>Mother</h2>
+            <h2 class="subheader">Mother</h2>
             <div class="card"><a href="{% url 'adult_dog_detail' litter.mother.pk %}">
                 {% if litter.mother.main_image.url != None %}
                     <img src="{{ litter.mother.main_image.url }}" alt="Litter mother">
@@ -20,7 +20,7 @@
             </a></div>
         </div>
         <div class="father">
-            <h2>Father</h2>
+            <h2 class="subheader">Father</h2>
             <div class="card"><a href="{% url 'adult_dog_detail' litter.father.pk %}">
                 {% if litter.father.main_image.url != None %}
                     <img src="{{ litter.father.main_image.url }}" alt="Litter father">
@@ -33,7 +33,7 @@
             </a></div>
         </div>
     </div>
-    {%if litter.dogs|length > 0 %}
+    {%if litter.dogs.all|length > 0 %}
         <h2 class="subheader">Puppies</h2>
     {% endif %}
 

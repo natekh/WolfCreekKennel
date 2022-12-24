@@ -43,7 +43,7 @@
                 </div>
             {% endif %}
             {% for litter in coming_soon %}
-                <div class="upcoming-card"><a href="{% url 'litter_detail' litter.pk %}">
+                 <div class="upcoming-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
                         <img src="{{ litter.main_image.url }}" alt="Litter">
                     {% endif %}

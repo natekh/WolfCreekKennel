@@ -33,7 +33,8 @@ urlpatterns = [
     path('available_puppy/<int:pk>/', views.puppy_detail_sale, name="available_puppy_detail"),
     path('puppy/<int:pk>/', views.puppy_detail, name="puppy_detail"),
     path('dog/<int:pk>/', views.adult_dog_detail, name="adult_dog_detail"),
-    path('litter/<int:pk>/', views.litter_detail, name="litter_detail")
+    path('litter/<int:pk>/', views.litter_detail, name="litter_detail"),
+    path('newsletter/', views.add_email_to_newsletter, name="add_email_to_newsletter")
 ]
 
 if settings.DEBUG:

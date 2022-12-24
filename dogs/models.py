@@ -91,3 +91,9 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+class Email(models.Model):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email

@@ -15,7 +15,6 @@ const app = Vue.createApp({
             email: {
                 'first_name': '',
                 'last_name': '',
-                'message': '',
                 'reply_to': ''
             }    
         }
@@ -142,37 +141,43 @@ const app = Vue.createApp({
             this.currentImageCarouselIndex++
             this.getImageCarouselItems() 
         },
-    //     sendEmail(){       
-    //         axios({
-    //             method: 'post',
-    //             url: 'https://api.emailjs.com/api/v1.0/email/send',
-    //             data: {
-    //                 'service_id': process.env.service_id,
-    //                 'template_id': process.env.template_id,
-    //                 'user_id': process.env.user_id,
-    //                 'template_params': {
-    //                     'from_name': `${this.email.first_name} ${this.email.last_name}`,
-    //                     'to_name': 'Kyle',
-    //                     'message': this.email.message,
-    //                     'reply_to': this.email.reply_to
-    //                 },
-    //                 'accessToken': process.env.accessToken
-    //             }
-    //         }).then(response => {
-    //             console.log(response)
-    //             this.email.first_name = ""
-    //             this.email.last_name = ""
-    //             this.email.reply_to = ""
-    //             this.email.message = ""
-    //             alert("Message was sent!")
-    //         }).catch(error => {
-    //             console.log(error.response.data)
-    //             alert("There was an error.")
-    //         })
-    //     }
+        sendEmail(){ 
+            axios({
+                method: 'post',
+                url: 'https://api.emailjs.com/api/v1.0/email/send',
+                data: {
+                    'service_id': '',
+                    'template_id': '',
+                    'user_id': '',
+                    'template_params': {
+                        'from_name': `${this.email.first_name} ${this.email.last_name}`,
+                        'to_name': 'Kyle',
+                        'message': document.querySelector('#textbox').value,
+                        'reply_to': this.email.reply_to
+                    },
+                    'accessToken': ''
+                }
+            }).then(response => {
+                console.log(response)
+                this.email.first_name = ""
+                this.email.last_name = ""
+                this.email.reply_to = ""
+                document.querySelector('#textbox').value = ""
+                alert("Message was sent!")
+            }).catch(error => {
+                console.log(error.response.data)
+                alert("There was an error.")
+            })
+        }
     },
     created: function() {    
-        
+        // s = window.matchMedia("(max-width: 640px)")
+        // if (s.matches) {
+        //     card_limit = 
+        // }
+        // else {
+        //     card_limit = 2
+        // }
     },
     mounted(){   
         this.carouselItems = document.querySelectorAll('.card')

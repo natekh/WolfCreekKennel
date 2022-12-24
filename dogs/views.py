@@ -1,6 +1,7 @@
+import os
 from datetime import datetime
-from django.shortcuts import render, get_object_or_404
-from .models import Dog, Litter, Dog_Image, Litter_Image, Dog_Video, Litter_Video, Misc_Image, Misc_Video, FAQ
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Dog, Litter, Dog_Image, Litter_Image, Dog_Video, Litter_Video, Misc_Image, Misc_Video, FAQ, Email
 
 def get_age(dog_birthday):
     now = datetime.now().date()
@@ -99,11 +100,6 @@ def about_the_kennel(request):
     return render(request, 'about_the_kennel.html')
 
 def contact_us(request):
-    dogs = Dog.objects.all()
-    puppies_for_sale = []
-    for dog in dogs:
-        if dog.available_for_sale and dog.puppy:
-            puppies_for_sale.append(dog)
     return render(request, 'contact_us.html')
 
 def contact_us_about_puppy(request, pk):
@@ -136,3 +132,12 @@ def litter_detail(request, pk):
     litter = get_object_or_404(Litter, id=pk)
     context = {'litter': litter}
     return render(request, 'litter_detail.html', context)
+
+def add_email_to_newsletter(request):
+    email = request.POST['email']
+    email_address = Email(email=email)
+    try:
+        email_address.save()
+    except:
+        print("Post request failed.")
+    return redirect('index')
