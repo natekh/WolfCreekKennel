@@ -28,7 +28,7 @@ SECRET_KEY = os.environ['django_key'] # Used with Heroku
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ 'wolfcreekbulldogs.herokuapp.com']
 
 
 # Application definition
