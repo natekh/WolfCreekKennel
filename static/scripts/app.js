@@ -12,6 +12,8 @@ const app = Vue.createApp({
             currentLitterIndex: 2,
             upcomingLitterIndex: 2,
             pastLitterIndex: 2,
+            imageCarouselLimit: 3,
+            carouselLimit: 2,
             email: {
                 'first_name': '',
                 'last_name': '',
@@ -23,13 +25,13 @@ const app = Vue.createApp({
         getCarouselItems(carousel){
             if (carousel === "general") {
                 if (this.currentCarouselIndex >= this.carouselItems.length){
-                    this.currentCarouselIndex = 2
+                    this.currentCarouselIndex = this.carouselLimit
                 }
-                if (this.currentCarouselIndex < 2) {
+                if (this.currentCarouselIndex < this.carouselLimit) {
                     this.currentCarouselIndex = this.carouselItems.length - 1
                 }
                 for (let i=0; i < this.carouselItems.length; i++){
-                    if (i >= this.currentCarouselIndex - 2 && i <= this.currentCarouselIndex) {
+                    if (i >= this.currentCarouselIndex - this.carouselLimit && i <= this.currentCarouselIndex) {
                         this.carouselItems[i].style.display = 'block'
                     }
                     else {
@@ -39,13 +41,13 @@ const app = Vue.createApp({
             }
             else if (carousel === "current") {
                 if (this.currentLitterIndex >= this.currentCarouselItems.length){
-                    this.currentLitterIndex = 2
+                    this.currentLitterIndex = this.carouselLimit
                 }
-                if (this.currentLitterIndex < 2) {
+                if (this.currentLitterIndex < this.carouselLimit) {
                     this.currentLitterIndex = this.currentCarouselItems.length - 1
                 }
                 for (let i=0; i < this.currentCarouselItems.length; i++){
-                    if (i >= this.currentLitterIndex - 2 && i <= this.currentLitterIndex) {
+                    if (i >= this.currentLitterIndex - this.carouselLimit && i <= this.currentLitterIndex) {
                         this.currentCarouselItems[i].style.display = 'block'
                     }
                     else {
@@ -55,13 +57,13 @@ const app = Vue.createApp({
             }
             else if (carousel === "upcoming") {
                 if (this.upcomingLitterIndex >= this.upcomingCarouselItems.length){
-                    this.upcomingLitterIndex = 2
+                    this.upcomingLitterIndex = this.carouselLimit
                 }
-                if (this.upcomingLitterIndex < 2) {
+                if (this.upcomingLitterIndex < this.carouselLimit) {
                     this.upcomingLitterIndex = this.upcomingCarouselItems.length - 1
                 }
                 for (let i=0; i < this.upcomingCarouselItems.length; i++){
-                    if (i >= this.upcomingLitterIndex - 2 && i <= this.upcomingLitterIndex) {
+                    if (i >= this.upcomingLitterIndex - this.carouselLimit && i <= this.upcomingLitterIndex) {
                         this.upcomingCarouselItems[i].style.display = 'block'
                     }
                     else {
@@ -71,13 +73,13 @@ const app = Vue.createApp({
             }
             else if (carousel === "past") {
                 if (this.pastLitterIndex >= this.pastCarouselItems.length){
-                    this.pastLitterIndex = 2
+                    this.pastLitterIndex = this.carouselLimit
                 }
-                if (this.pastLitterIndex < 2) {
+                if (this.pastLitterIndex < this.carouselLimit) {
                     this.pastLitterIndex = this.pastCarouselItems.length - 1
                 }
                 for (let i=0; i < this.pastCarouselItems.length; i++){
-                    if (i >= this.pastLitterIndex - 2 && i <= this.pastLitterIndex) {
+                    if (i >= this.pastLitterIndex - this.carouselLimit && i <= this.pastLitterIndex) {
                         this.pastCarouselItems[i].style.display = 'block'
                     }
                     else {
@@ -89,13 +91,13 @@ const app = Vue.createApp({
         },
         getImageCarouselItems(){
             if (this.currentImageCarouselIndex >= this.imageCarouselItems.length){
-                this.currentImageCarouselIndex = 3
+                this.currentImageCarouselIndex = this.imageCarouselLimit
             }
-            if (this.currentImageCarouselIndex < 3) {
+            if (this.currentImageCarouselIndex < this.imageCarouselLimit) {
                 this.currentImageCarouselIndex = this.imageCarouselItems.length - 1
             }
             for (let i=0; i < this.imageCarouselItems.length; i++){
-                if (i >= this.currentImageCarouselIndex - 3 && i <= this.currentImageCarouselIndex) {
+                if (i >= this.currentImageCarouselIndex - this.imageCarouselLimit && i <= this.currentImageCarouselIndex) {
                     this.imageCarouselItems[i].style.display = 'block'
                 }
                 else {
@@ -171,13 +173,16 @@ const app = Vue.createApp({
         }
     },
     created: function() {    
-        // s = window.matchMedia("(max-width: 640px)")
-        // if (s.matches) {
-        //     card_limit = 
-        // }
-        // else {
-        //     card_limit = 2
-        // }
+        s = window.matchMedia("(max-width: 640px)")
+        if (s.matches) {
+            this.currentImageCarouselIndex = 0
+            this.currentCarouselIndex = 0           
+            this.currentLitterIndex = 0
+            this.upcomingLitterIndex = 0
+            this.pastLitterIndex = 0
+            this.imageCarouselLimit = 0
+            this.carouselLimit = 0
+        }
     },
     mounted(){   
         this.carouselItems = document.querySelectorAll('.card')

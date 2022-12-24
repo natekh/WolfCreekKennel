@@ -1,5 +1,81 @@
 @media screen and (max-width: 640px) {
-    body {
-        color: red;
+    
+    nav {
+        display: none;
+    }
+    
+    #block {
+        font-size: medium;
+        margin-inline: 2rem;
+    }
+
+    #logo {
+        width: 15rem;
+    }
+
+    #logo-text {
+        font-size: large;
+    }
+
+    .image-carousel {
+        margin-inline: 2rem;
+    }
+
+    .card-container {
+        gap: 2rem;
+        margin-inline: 2rem;
+    }
+
+    .card {
+        padding: 2rem;
+    }
+    
+    .card img{
+        width: 10rem;
+    }
+
+    .left-arrow, .right-arrow {
+        width: 2rem;
+    }
+
+    h1 {
+        font-size: x-large;
+    }
+
+    h2 {
+        font-size: large
+    } 
+
+    nav {
+        margin-inline: 2rem;
+    }
+
+    #newsletter {
+        font-size: medium;
+    }
+
+    #newsletter-input-button {
+        flex-direction: column;
+        align-items: center;   
+    }
+
+    #newsletter-input-button input, button {
+        padding-inline: .5rem;
+        padding-block: .25rem;
+        font-size: small;
+        text-align: center;
+    }
+
+    #footer {
+        margin-inline: 2rem;
+        font-size: x-small;
+        padding: .5rem;
+        padding-bottom: 1rem;
+    }
+
+    #footer img {
+        margin-left: .5rem;
+        width: 2rem;
+        height: 2rem;
     }
 }
