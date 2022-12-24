@@ -2,7 +2,6 @@ const app = Vue.createApp({
     delimiters: ['[[', ']]'],
     data(){
         return{
-            //this is a comment
             carouselItems: [],
             imageCarouselItems: [],
             currentCarouselItems: [],
