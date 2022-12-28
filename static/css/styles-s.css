@@ -56,7 +56,7 @@
 
     #newsletter-input-button {
         flex-direction: column;
-        align-items: center;   
+        align-items: center;        
     }
 
     #newsletter-input-button input, button {

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-#from .config import django_key #comment this line if pushing to Heroku
+from .config import django_key #comment this line if pushing to Heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,13 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['django_key'] # Used with Heroku
-# SECRET_KEY = django_key
+#SECRET_KEY = os.environ['django_key'] # Used with Heroku
+SECRET_KEY = django_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 'wolfcreekbulldogs.herokuapp.com']
+#ALLOWED_HOSTS = [ 'wolfcreekbulldogs.herokuapp.com']
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -130,5 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-import django_on_heroku
-django_on_heroku.settings(locals())
+# import django_on_heroku
+# django_on_heroku.settings(locals())
