@@ -29,12 +29,13 @@ urlpatterns = [
     path('aboutTheKennel/', views.about_the_kennel, name="about_the_kennel"),
     path('contactUs/', views.contact_us, name="contact_us"),
     path('contactUs/<int:pk>/', views.contact_us_about_puppy, name="contact_us_about_puppy"),
+    path('contactUs/send/', views.send_contact_us, name="send_contact_us"),
     path('faq/', views.faq, name="faq"),
     path('available_puppy/<int:pk>/', views.puppy_detail_sale, name="available_puppy_detail"),
     path('puppy/<int:pk>/', views.puppy_detail, name="puppy_detail"),
     path('dog/<int:pk>/', views.adult_dog_detail, name="adult_dog_detail"),
     path('litter/<int:pk>/', views.litter_detail, name="litter_detail"),
-    path('newsletter/', views.add_email_to_newsletter, name="add_email_to_newsletter")
+    path('newsletter/', views.add_email_to_newsletter, name="add_email_to_newsletter"),
 ]
 
 if settings.DEBUG:

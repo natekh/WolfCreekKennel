@@ -6,11 +6,20 @@
         <h2>From the family pet to the award winning show dog.</h2>
     </div>
     <div class="card-container">
-        {% if puppies_for_sale|length > 3%}
+        <div v-if="screenSize == 'small'">
+            {% if puppies_for_sale|length > 1%}
             <div @click="carouselLeft('general')" class="div-click">
                 <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
             </div>
         {% endif %}
+        </div>
+        <div v-else>
+            {% if puppies_for_sale|length > 3%}
+            <div @click="carouselLeft('general')" class="div-click">
+                <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+            </div>
+        {% endif %}
+        </div>     
         {% for puppy in puppies_for_sale %}
             {% if puppy.main_image.url != None %}
                 <div class="card"><a href="{% url 'available_puppy_detail' puppy.pk %}">
@@ -27,13 +36,21 @@
                 </a></div>
             {% endif %}
         {% endfor %}
-        {% if puppies_for_sale|length > 3%}
+        <div v-if="screenSize == 'small'">
+            {% if puppies_for_sale|length > 1%}
             <div @click="carouselRight('general')" class="div-click">
                 <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
             </div>
         {% endif %}
         </div>
-
+        <div v-else>
+            {% if puppies_for_sale|length > 3%}
+            <div @click="carouselRight('general')" class="div-click">
+                <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+            </div>
+        {% endif %}
+        </div>     
+    </div>
     <div id="newsletter">
         <h3>STAY IN THE KNOW</h3>
         <p>Want to know about upcomming litters, show results, and news about the kennel?</p>

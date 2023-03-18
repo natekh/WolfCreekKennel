@@ -1,9 +1,14 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Red+Hat+Display&display=swap');
 
+[v-cloak] {
+  display: none;
+}
+
 body {
     margin: 0rem;
     padding: 0rem;
+    box-sizing: border-box;
     background: rgb(6,42,51);
     background: linear-gradient(90deg, rgba(6,42,51,1) 0%, rgba(0,0,0,1) 42%);
     color: white;
@@ -49,6 +54,14 @@ body button {
 
 #offset {
     animation: letter-flicker 2s linear infinite;
+}
+
+.hamburger {
+  display: none;
+}
+
+.nav-menu {
+  display: none;
 }
 
 nav {
@@ -129,6 +142,10 @@ nav a:hover {
     /* margin-top: 4rem; */
 }
 
+#phone-heading {
+  display: none;
+}
+
 #index-heading {
     display: flex;
     flex-direction: column;
@@ -206,9 +223,13 @@ nav a:hover {
 
 #contact-us-page-container {
     display: flex;
+    /* flex-direction: column; */
     justify-content: space-between;
 }
 
+/* .form-name {
+  flex-direction: column;
+} */
 
 #contact-us-form {
     font-size: large;
@@ -286,7 +307,8 @@ nav a:hover {
 
 .heading {
     text-align: center;
-    color: #0ff1f1
+    color: #0ff1f1;
+    margin-bottom: 2rem;
 }
 
 .main-image {

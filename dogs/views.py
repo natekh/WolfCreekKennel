@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Dog, Litter, Dog_Image, Litter_Image, Dog_Video, Litter_Video, Misc_Image, Misc_Video, FAQ, Email
 
 def get_age(dog_birthday):
@@ -141,3 +143,15 @@ def add_email_to_newsletter(request):
     except:
         print("Post request failed.")
     return redirect('index')
+
+
+def send_contact_us(request):
+    email_from = settings.EMAIL_HOST_USER
+    # email_to = ('khuckabay@gmail.com',)
+    email_to = ('nathanhuckabay@gmail.com',)
+    customer_email = request.POST['email']
+    name = request.POST['first_name'] + ' ' + request.POST['last_name']
+    message = request.POST['message'] + f"\n\nThis message is from {name}. Their email address is {customer_email}."  
+    subject = f"New Wolfcreek Kennels message from {name}"
+    send_mail(subject, message, email_from, email_to)
+    return redirect('contact_us')

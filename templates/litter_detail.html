@@ -38,11 +38,20 @@
     {% endif %}
 
     <div class="card-container">
-        {% if litter.dogs|length > 3%}
-            <div @click="carouselLeft('general')" class="div-click">
-                <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-            </div>
-        {% endif %}
+        <div v-if="screenSize == 'small'">
+            {% if litter.dogs|length > 1%}
+                <div @click="carouselLeft('general')" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+        </div>
+        <div v-else>
+            {% if litter.dogs|length > 3%}
+                <div @click="carouselLeft('general')" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+        </div>      
         {% for puppy in litter.dogs.all %}
             {% if puppy.main_image.url != None %}
                 <div class="card">
@@ -64,29 +73,55 @@
                 </a></div>
             {% endif %}
         {% endfor %}
-        {% if litter.dogs|length > 3%}
-            <div @click="carouselRight('general')" class="div-click">
-                <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
-            </div>
-        {% endif %}
-        </div>
-
-        <div class="image-carousel">
-            {% if litter.litter_images.all|length > 4  %}
-                <div @click="imageCarouselLeft()" class="div-click">
-                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-                </div>
-            {% endif %}
-                {% for image in litter.litter_images.all %}       
-                    <div class="image-carousel-image">
-                        <img src="{{ image.image.url }}" alt="Additional puppy photo">
-                    </div>
-                {% endfor %}
-            {% if litter.litter_images.all|length > 4 %}
-                <div @click="imageCarouselRight()" class="div-click">
+        <div v-if="screenSize == 'small'">
+            {% if litter.dogs|length > 1%}
+                <div @click="carouselRight('general')" class="div-click">
                     <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
                 </div>
             {% endif %}
+        </div>
+        <div v-else>
+            {% if litter.dogs|length > 3%}
+                <div @click="carouselRight('general')" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>        
+    </div>
+        <div class="image-carousel">
+            <div v-if="screenSize == 'small'">
+                {% if litter.litter_images.all|length > 1  %}
+                    <div @click="imageCarouselLeft()" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if litter.litter_images.all|length > 4  %}
+                    <div @click="imageCarouselLeft()" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>           
+            {% for image in litter.litter_images.all %}       
+                <div class="image-carousel-image">
+                    <img src="{{ image.image.url }}" alt="Additional puppy photo">
+                </div>
+            {% endfor %}
+            <div v-if="screenSize == 'small'">
+                {% if litter.litter_images.all|length > 1 %}
+                    <div @click="imageCarouselRight()" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if litter.litter_images.all|length > 4 %}
+                    <div @click="imageCarouselRight()" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>          
         </div>
     
     
