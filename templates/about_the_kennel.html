@@ -13,9 +13,13 @@
 
             <p>We are a family from Oklahoma that is committed to raising high quality English and French Bulldogs. We
                 are passionate about these breeds and are dedicated to ensuring our high quality bulldogs are
-                living happy and healthy lives.<br>
+                living happy and healthy lives.<br><br>
                 ​All of our bulldogs are AKC Registered and come with a one year health guarantee! We would
                 love to hear from you if you are interested in one of our pups!</p>
+
+            <div id=about-the-kennel-hero-container v-if="screenSize === 'small'">
+                <img id="about-the-kennel-hero" src="{% static '/images/bulldog.jpg' %}" alt="Bulldog">
+            </div>
 
             <h3>Meet the family</h3>
 
@@ -25,8 +29,6 @@
                 our love of this breed with others!</p>
 
         </div>
-        <div v-if="screenSize === 'small'">
-            <img id="about-the-kennel-hero" src="{% static '/images/bulldog.jpg' %}" alt="Bulldog">
-        </div>
+        
     </div>
 {% endblock %}

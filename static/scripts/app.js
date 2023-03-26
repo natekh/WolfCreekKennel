@@ -157,6 +157,10 @@ const app = Vue.createApp({
                 body.style.overflow = "visible"
             }
         },
+        makeHTMLFriendly(html) {
+            return html
+                .replace("&amp;", "&")
+        }
         // sendEmail(){ 
         //     axios({
         //         method: 'post',
@@ -187,6 +191,19 @@ const app = Vue.createApp({
         // }
     },
     created: function() {    
+        // s = window.matchMedia("(max-width: 640px)")
+        // if (s.matches) {
+        //     this.currentImageCarouselIndex = 0
+        //     this.currentCarouselIndex = 0           
+        //     this.currentLitterIndex = 0
+        //     this.upcomingLitterIndex = 0
+        //     this.pastLitterIndex = 0
+        //     this.imageCarouselLimit = 0
+        //     this.carouselLimit = 0
+        //     this.screenSize = 'small'
+        // }
+    },
+    mounted(){   
         s = window.matchMedia("(max-width: 640px)")
         if (s.matches) {
             this.currentImageCarouselIndex = 0
@@ -197,15 +214,15 @@ const app = Vue.createApp({
             this.imageCarouselLimit = 0
             this.carouselLimit = 0
             this.screenSize = 'small'
+            this.phoneHeading = this.makeHTMLFriendly(document.getElementsByTagName('h1')[2].innerHTML)
+            if (this.phoneHeading.includes("Wolf Creek Bulldogs") || this.phoneHeading.includes("This puppy is available!")) {
+                this.phoneHeading = ""
+            } 
+            else {
+                document.getElementsByTagName('h1')[2].style.display = "none"
+            }
         }
-    },
-    mounted(){   
-        this.phoneHeading = document.getElementsByTagName('h1')[2].innerHTML
-        if (this.phoneHeading.includes("Wolf Creek Bulldogs")) {
-            this.phoneHeading = ""
-        } else {
-            document.getElementsByTagName('h1')[2].style.display = "none"
-        }
+        
         this.carouselItems = document.querySelectorAll('.card')
         if (this.carouselItems.length > 0 ) {
             this.getCarouselItems("general")
