@@ -12,8 +12,14 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-from .config import django_key #comment this line if pushing to Heroku
-from .config import email_password
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+if DEBUG:
+    from .config import django_key
+    from .config import email_password, email_host_user
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,15 +29,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ['django_key'] # Used with Heroku
-SECRET_KEY = django_key
+if DEBUG:
+    SECRET_KEY = django_key
+else:
+    SECRET_KEY = os.environ['django_key'] # Used with Heroku
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-#ALLOWED_HOSTS = [ 'wolfcreekbulldogs.herokuapp.com']
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = [ 'wolfcreekbulldogs.herokuapp.com']
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -137,8 +146,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'wolfcreek.kennels.messaging@gmail.com'
-EMAIL_HOST_PASSWORD = email_password
+if DEBUG:
+    EMAIL_HOST_USER = email_host_user
+    EMAIL_HOST_PASSWORD = email_password
+else:
+    os.environ['email_host_user']
+    os.environ['email_password']
 
-# import django_on_heroku
-# django_on_heroku.settings(locals())
+if not DEBUG:
+    import django_on_heroku
+    django_on_heroku.settings(locals())
