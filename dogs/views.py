@@ -112,7 +112,7 @@ def contact_us_about_puppy(request, pk):
 def faq(request):
     faqs = FAQ.objects.all()
     context = {'faqs': faqs}
-    return render(request, 'faq.html', context)
+    return render(request, 'FAQ.html', context)
 
 def puppy_detail_sale(request, pk):
     puppy = get_object_or_404(Dog, id=pk)
