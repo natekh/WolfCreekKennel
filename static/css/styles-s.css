@@ -28,15 +28,26 @@
         padding-block: 1rem;
     }
 
+    .individual-card-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-inline: 0rem;
+        padding-block: 1rem;
+    }
+
+    .image-carousel-image img:hover {
+        transform: scale(1);
+      }
+
     .subheader {
         margin-top: 1rem;
     }
 
-    .card, .current-card, .upcoming-card, .past-card {
+    .card, .current-card, .upcoming-card, .past-card, .individual-card {
         padding: 2rem;
     }
     
-    .card img, .current-card img, .upcoming-card img, .past-card img{
+    .card img, .current-card img, .upcoming-card img, .past-card img, .individual-card img{
         width: 10rem;
     }
 

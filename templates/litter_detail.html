@@ -5,10 +5,10 @@
         <h1>{{litter.title}}</h1>
     </div>
 
-    <div class="card-container">
+    <div class="individual-card-container">
         <div class="mother">
             <h2 class="subheader">Mother</h2>
-            <div class="card"><a href="{% url 'adult_dog_detail' litter.mother.pk %}">
+            <div class="individual-card"><a href="{% url 'adult_dog_detail' litter.mother.pk %}">
                 {% if litter.mother.main_image.url != None %}
                     <img src="{{ litter.mother.main_image.url }}" alt="Litter mother">
                 {% endif %}
@@ -21,7 +21,7 @@
         </div>
         <div class="father">
             <h2 class="subheader">Father</h2>
-            <div class="card"><a href="{% url 'adult_dog_detail' litter.father.pk %}">
+            <div class="individual-card"><a href="{% url 'adult_dog_detail' litter.father.pk %}">
                 {% if litter.father.main_image.url != None %}
                     <img src="{{ litter.father.main_image.url }}" alt="Litter father">
                 {% endif %}
@@ -33,25 +33,26 @@
             </a></div>
         </div>
     </div>
+
     {%if litter.dogs.all|length > 0 %}
         <h2 class="subheader">Puppies</h2>
     {% endif %}
 
     <div class="card-container">
         <div v-if="screenSize == 'small'">
-            {% if litter.dogs|length > 1%}
+            {% if litter.dogs.all|length > 1%}
                 <div @click="carouselLeft('general')" class="div-click">
                     <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
                 </div>
             {% endif %}
         </div>
         <div v-else>
-            {% if litter.dogs|length > 3%}
+            {% if litter.dogs.all|length > 3%}
                 <div @click="carouselLeft('general')" class="div-click">
                     <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
                 </div>
             {% endif %}
-        </div>      
+        </div>    
         {% for puppy in litter.dogs.all %}
             {% if puppy.main_image.url != None %}
                 <div class="card">
@@ -74,14 +75,14 @@
             {% endif %}
         {% endfor %}
         <div v-if="screenSize == 'small'">
-            {% if litter.dogs|length > 1%}
+            {% if litter.dogs.all|length > 1%}
                 <div @click="carouselRight('general')" class="div-click">
                     <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
                 </div>
             {% endif %}
         </div>
         <div v-else>
-            {% if litter.dogs|length > 3%}
+            {% if litter.dogs.all|length > 3%}
                 <div @click="carouselRight('general')" class="div-click">
                     <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
                 </div>

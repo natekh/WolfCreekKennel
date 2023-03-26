@@ -172,7 +172,7 @@ nav a:hover {
     margin-left: 2rem;
 }
 
-.card-container {
+.card-container, .individual-card-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,7 +181,7 @@ nav a:hover {
     gap: 3rem;
 }
 
-.card, .current-card, .upcoming-card, .past-card {
+.card, .current-card, .upcoming-card, .past-card, .individual-card {
     background: rgb(6,42,51);
     background: linear-gradient(270deg, rgba(6,42,51,1) 0%, rgba(0,0,0,1) 42%);
     box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
@@ -192,7 +192,7 @@ nav a:hover {
     padding: 3rem;  
 }
 
-.card a, .current-card a, .upcoming-card a, .past-card a {
+.card a, .current-card a, .upcoming-card a, .past-card a, .individual-card a {
   text-decoration: none;
   text-align: center;
   color: white;
@@ -207,7 +207,7 @@ nav a:hover {
             2.5px 4.5px 16.5px 0.5px rgba(0,255,255,0.7);
 }
 
-.card img, .current-card img, .upcoming-card img, .past-card img{
+.card img, .current-card img, .upcoming-card img, .past-card img, .individual-card img{
     width: 15rem;
     /* height: 15rem; */
     border-radius: 3%;
