@@ -14,11 +14,20 @@
         {% endwith %}
 
         <div class="card-container">
-            {% if adult_dogs|length > 3%}
-                <div @click="carouselLeft('general')" class="div-click">
-                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if adult_dogs|length > 1%}
+                    <div @click="carouselLeft('general')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if adult_dogs|length > 3%}
+                    <div @click="carouselLeft('general')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
             {% for dog in adult_dogs %}
                 <div class="card"><a href="{% url 'adult_dog_detail' dog.pk %}">
                     {% if dog.main_image.url != None %}
@@ -34,18 +43,20 @@
                             <p>Age: {{age.age}}</p>
                         {% endif %}
                     {% endfor %}
-                    {% comment %} {% if puppy.description != None %}
-                        <p>{{ puppy.description }}</p>
-                    {% endif %}
-                    {% if puppy.available_for_sale %}
-                        <p>Available</p>
-                    {% endif %} {% endcomment %}
                 </a></div>
             {% endfor %}
-            {% if adult_dogs|length > 3%}
+            <div v-if="screenSize == 'small'">
+                {% if adult_dogs|length > 1%}
                 <div @click="carouselRight('general')" class="div-click">
                     <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
                 </div>
             {% endif %}
             </div>
+            <div v-else>
+                {% if adult_dogs|length > 3%}
+                <div @click="carouselRight('general')" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+            </div>           
 {% endblock %}

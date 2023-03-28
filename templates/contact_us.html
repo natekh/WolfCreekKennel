@@ -4,38 +4,55 @@
     <div id="contact-us-page-container">
         <div id="contact-us-text">
             <h1>Contact us</h1>
-            <p>Have a question? We'd love to hear from you.<br>Please fill out the form with your inquiry.</p>
+            <p>Have a question?<br>We'd love to hear from you.<br>Please fill out the form with your inquiry.</p>
         </div>
-        <form id="contact-us-form" ref="form">
+        <form id="contact-us-form" action="{% url 'send_contact_us' %}" method="post">
+            {% csrf_token %}
             <div id="contact-us-container">
                 <div class="form-name">
                     <div class="form-first-name">
                         <label for="first-name">First Name*</label>
-                        <input type="text" id="first-name" v-model="email.first_name">
+                        <input type="text" id="first-name" name="first_name">
                     </div>
                     <div class="form-last-name">
                         <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" v-model="email.last_name">
+                        <input type="text" id="last-name" name="last_name">
                     </div>
                 </div>
                 <div class="form-email">
                     <label for="email">Email*</label>
-                    <input type="email" id="email" v-model="email.reply_to">
+                    <input type="email" id="email" name="email">
                 </div>
                 <div class="form-textbox">
                     {% if puppy != None %}
                         <label for="textbox">What can we help you with?*</label>
                         {% if puppy.show_name %} {% comment %} v-model="email.message {% endcomment %}
-                            <textarea id="textbox" rows="15" cols="50">Hi, I'm interested in purchasing {{puppy.name}}.</textarea>
+                            {% comment %} <div v-if="screenSize == 'small'">
+                                <textarea id="textbox" rows="8" cols="30">Hi, I'm interested in purchasing {{puppy.name}}.</textarea>   
+                            </div>
+                            <div v-else>{% endcomment %}
+                                <textarea name="message" id="textbox" rows="15" cols="50">Hi, I'm interested in purchasing {{puppy.name}}.</textarea>   
+                            {% comment %} </div>                                     {% endcomment %}
                         {% else %}
-                            <textarea id="textbox" rows="15" cols="50">Hi, I'm interested in the purchasing the puppy from /puppies/{{puppy.pk}}.</textarea>
+                            {% comment %} <div v-if="screenSize == 'small'">
+                                <textarea id="textbox" rows="8" cols="30">Hi, I'm interested in the purchasing the puppy from /puppies/{{puppy.pk}}.</textarea>   
+                            </div>
+                            <div v-else> {% endcomment %}
+                                <textarea name="message" id="textbox" rows="15" cols="50">Hi, I'm interested in the purchasing the puppy from /puppies/{{puppy.pk}}.</textarea>   
+                            {% comment %} </div>  {% endcomment %}
                         {% endif %}
                     {% else %}
+                    {% comment %} <div v-if="screenSize == 'small'">
+                        <textarea id="textbox" rows="8" cols="30"></textarea>   
+                    </div>
+                    <div v-else> {% endcomment %}
                         <label for="textbox">What can we help you with?*</label>
-                        <textarea id="textbox" rows="15" cols="50"></textarea>                        
+                        <textarea name="message" id="textbox" rows="15" cols="50"></textarea>   
+                    {% comment %} </div>                                             {% endcomment %}
                     {% endif %}
                 </div>
-                <button type="button" @click="sendEmail()">Submit</button>
+                {% comment %} <button type="button" type="submit" @click="sendEmail()">Submit</button> {% endcomment %}
+                <button type="submit">Submit</button>
             </div>
         </form>
     </div>

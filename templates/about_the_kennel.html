@@ -5,14 +5,30 @@
         <h1>About the Kennel</h1>
     </div>
     <div id="about-the-kennel">
-    <div>
-    <img id="about-the-kennel-hero" src="{% static '/images/bulldog.jpg' %}" alt="Bulldog">
-    </div>
-    <div id="about-the-kennel-text">
-        <p>Wolf Creek Bulldogs is a kennel located an hour outside of Tulsa, Oklahoma. We pride ourselves
-            in breeding quality English and French Bulldogs. We breed dogs according to AKC standards
-            and produce champion show dogs. These dogs can compete in the show ring and make great
-            companions in the home.</p>
-    </div>
+        <div v-if="screenSize === 'large'">
+        <img id="about-the-kennel-hero" src="{% static 'images/bulldog.jpg' %}" alt="Bulldog">
+        </div>
+        <div id="about-the-kennel-text">
+            <h3>Background Information</h3>
+
+            <p>We are a family from Oklahoma that is committed to raising high quality English and French Bulldogs. We
+                are passionate about these breeds and are dedicated to ensuring our high quality bulldogs are
+                living happy and healthy lives.<br><br>
+                ​All of our bulldogs are AKC Registered and come with a one year health guarantee! We would
+                love to hear from you if you are interested in one of our pups!</p>
+
+            <div id=about-the-kennel-hero-container v-if="screenSize === 'small'">
+                <img id="about-the-kennel-hero" src="{% static 'images/bulldog.jpg' %}" alt="Bulldog">
+            </div>
+
+            <h3>Meet the family</h3>
+
+            <p>Our love for bulldogs started at an early age. At the age of 16, Kyle saved up the money to gift
+                Jenny her first English bulldog. The rest is history! We were hooked to this breed and their
+                loving, yet playful demeanor. Several years, and three kids later we are still dedicated to sharing
+                our love of this breed with others!</p>
+
+        </div>
+        
     </div>
 {% endblock %}

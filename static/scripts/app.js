@@ -14,11 +14,13 @@ const app = Vue.createApp({
             pastLitterIndex: 2,
             imageCarouselLimit: 3,
             carouselLimit: 2,
-            email: {
-                'first_name': '',
-                'last_name': '',
-                'reply_to': ''
-            }    
+            // email: {
+            //     'first_name': '',
+            //     'last_name': '',
+            //     'reply_to': ''
+            // },
+            screenSize: 'large',
+            phoneHeading: ''   
         }
     },
     methods: {
@@ -143,36 +145,65 @@ const app = Vue.createApp({
             this.currentImageCarouselIndex++
             this.getImageCarouselItems() 
         },
-        sendEmail(){ 
-            axios({
-                method: 'post',
-                url: 'https://api.emailjs.com/api/v1.0/email/send',
-                data: {
-                    'service_id': '',
-                    'template_id': '',
-                    'user_id': '',
-                    'template_params': {
-                        'from_name': `${this.email.first_name} ${this.email.last_name}`,
-                        'to_name': 'Kyle',
-                        'message': document.querySelector('#textbox').value,
-                        'reply_to': this.email.reply_to
-                    },
-                    'accessToken': ''
-                }
-            }).then(response => {
-                console.log(response)
-                this.email.first_name = ""
-                this.email.last_name = ""
-                this.email.reply_to = ""
-                document.querySelector('#textbox').value = ""
-                alert("Message was sent!")
-            }).catch(error => {
-                console.log(error.response.data)
-                alert("There was an error.")
-            })
+        mobileMenu(){
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
+            const body = document.querySelector("body")
+            hamburger.classList.toggle("active")
+            navMenu.classList.toggle("active")
+            if (hamburger.classList.contains('active')) {
+                body.style.overflow = "hidden"
+            }else {
+                body.style.overflow = "visible"
+            }
+        },
+        makeHTMLFriendly(html) {
+            return html
+                .replace("&amp;", "&")
         }
+        // sendEmail(){ 
+        //     axios({
+        //         method: 'post',
+        //         url: 'https://api.emailjs.com/api/v1.0/email/send',
+        //         data: {
+        //             'service_id': '',
+        //             'template_id': '',
+        //             'user_id': '',
+        //             'template_params': {
+        //                 'from_name': `${this.email.first_name} ${this.email.last_name}`,
+        //                 'to_name': 'Kyle',
+        //                 'message': document.querySelector('#textbox').value,
+        //                 'reply_to': this.email.reply_to
+        //             },
+        //             'accessToken': ''
+        //         }
+        //     }).then(response => {
+        //         console.log(response)
+        //         this.email.first_name = ""
+        //         this.email.last_name = ""
+        //         this.email.reply_to = ""
+        //         document.querySelector('#textbox').value = ""
+        //         alert("Message was sent!")
+        //     }).catch(error => {
+        //         console.log(error.response.data)
+        //         alert("There was an error.")
+        //     })
+        // }
     },
     created: function() {    
+        // s = window.matchMedia("(max-width: 640px)")
+        // if (s.matches) {
+        //     this.currentImageCarouselIndex = 0
+        //     this.currentCarouselIndex = 0           
+        //     this.currentLitterIndex = 0
+        //     this.upcomingLitterIndex = 0
+        //     this.pastLitterIndex = 0
+        //     this.imageCarouselLimit = 0
+        //     this.carouselLimit = 0
+        //     this.screenSize = 'small'
+        // }
+    },
+    mounted(){   
         s = window.matchMedia("(max-width: 640px)")
         if (s.matches) {
             this.currentImageCarouselIndex = 0
@@ -182,9 +213,16 @@ const app = Vue.createApp({
             this.pastLitterIndex = 0
             this.imageCarouselLimit = 0
             this.carouselLimit = 0
+            this.screenSize = 'small'
+            this.phoneHeading = this.makeHTMLFriendly(document.getElementsByTagName('h1')[2].innerHTML)
+            if (this.phoneHeading.includes("Wolf Creek Bulldogs") || this.phoneHeading.includes("This puppy is available!")) {
+                this.phoneHeading = ""
+            } 
+            else {
+                document.getElementsByTagName('h1')[2].style.display = "none"
+            }
         }
-    },
-    mounted(){   
+        
         this.carouselItems = document.querySelectorAll('.card')
         if (this.carouselItems.length > 0 ) {
             this.getCarouselItems("general")

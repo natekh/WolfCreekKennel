@@ -9,11 +9,20 @@
         <h2 class="subheader">Current Litters</h1>
         {% endif %}
         <div class="card-container">
-            {% if current|length > 3%}
-                <div @click="carouselLeft('current')" class="div-click">
-                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if current|length > 1%}
+                    <div @click="carouselLeft('current')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if current|length > 3%}
+                    <div @click="carouselLeft('current')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
             {% for litter in current %}
                 <div class="current-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
@@ -25,11 +34,20 @@
                     <p>{{litter.birthday.dogs|first}}</p>
                 </a></div>
             {% endfor %}
-            {% if current|length > 3%}
-                <div @click="carouselRight('current')" class="div-click">
-                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if current|length > 1%}
+                    <div @click="carouselRight('current')" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if current|length > 3%}
+                    <div @click="carouselRight('current')" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>          
         </div>
     </div>
     <div>
@@ -37,11 +55,20 @@
             <h2 class="subheader">Upcoming Litters</h1>
         {% endif %}
         <div class="card-container">
-            {% if coming_soon|length > 3%}
-                <div @click="carouselLeft('upcoming')" class="div-click">
-                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if coming_soon|length > 1%}
+                    <div @click="carouselLeft('upcoming')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if coming_soon|length > 3%}
+                    <div @click="carouselLeft('upcoming')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>           
             {% for litter in coming_soon %}
                  <div class="upcoming-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
@@ -53,11 +80,20 @@
                     <p>{{litter.due_date}}</p>
                 </a></div>
             {% endfor %}
-            {% if coming_soon|length > 3%}
-                <div @click="carouselRight('upcoming')" class="div-click">
-                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if coming_soon|length > 1%}
+                    <div @click="carouselRight('upcoming')" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if coming_soon|length > 3%}
+                    <div @click="carouselRight('upcoming')" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div>
@@ -65,11 +101,20 @@
             <h2 class="subheader">Past Litters</h1>   
         {% endif %} 
         <div class="card-container">
-            {% if past_litters|length > 3%}
-                <div @click="carouselLeft('past')" class="div-click">
-                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if past_litters|length > 1%}
+                    <div @click="carouselLeft('past')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if past_litters|length > 3%}
+                    <div @click="carouselLeft('past')" class="div-click">
+                        <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                    </div>
+                {% endif %}
+            </div>
             {% for litter in past_litters %}
                 <div class="past-card"><a href="{% url 'litter_detail' litter.pk %}">
                     {% if litter.main_image.url != None %}
@@ -81,11 +126,20 @@
                     <p>{{litter.birthday.dogs|first}}</p>
                 </a></div>
             {% endfor %}
-            {% if past_litters|length > 3%}
-                <div @click="carouselRight('past')" class="div-click">
-                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
-                </div>
-            {% endif %}
+            <div v-if="screenSize == 'small'">
+                {% if past_litters|length > 1%}
+                    <div @click="carouselRight('past')" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>
+            <div v-else>
+                {% if past_litters|length > 3%}
+                    <div @click="carouselRight('past')" class="div-click">
+                        <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                    </div>
+                {% endif %}
+            </div>          
         </div>
     </div>
 

@@ -5,20 +5,38 @@
         <h1>Gallery</h1>
     </div>
     <div class="image-carousel">
-        {% if images|length > 4  %}
-            <div @click="imageCarouselLeft()" class="div-click">
-                <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
-            </div>
-        {% endif %}
-            {% for image in images %}       
-                <div class="image-carousel-image">
-                    <img src="{{ image.image.url }}" alt="Miscellaneous">
+        <div v-if="screenSize == 'small'">
+            {% if images|length > 1  %}
+                <div @click="imageCarouselLeft()" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
                 </div>
-            {% endfor %}
-        {% if images|length > 4 %}
-            <div @click="imageCarouselRight()" class="div-click">
-                <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+            {% endif %}
+        </div>
+        <div v-else>
+            {% if images|length > 4  %}
+                <div @click="imageCarouselLeft()" class="div-click">
+                    <img src="{% static 'images/left-arrow.png' %}" alt="Left navigation arrow" class="left-arrow">
+                </div>
+            {% endif %}
+        </div>
+        {% for image in images %}       
+            <div class="image-carousel-image">
+                <img src="{{ image.image.url }}" alt="Miscellaneous">
             </div>
-        {% endif %}
+        {% endfor %}
+        <div v-if="screenSize == 'small'">
+            {% if images|length > 1 %}
+                <div @click="imageCarouselRight()" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>
+        <div v-else>
+            {% if images|length > 4 %}
+                <div @click="imageCarouselRight()" class="div-click">
+                    <img src="{% static 'images/right-arrow.png' %}" alt="Right navigation arrow" class="right-arrow">
+                </div>
+            {% endif %}
+        </div>        
     </div>
 {% endblock %}

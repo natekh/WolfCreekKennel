@@ -14,28 +14,60 @@
     <title>Wolf Creek Bulldogs</title>
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <div id="logo-container">
             {% comment %} <a href={% url 'index' %}><img id="logo" src="{% static '/images/logo.png' %}" alt="logo"></a> {% endcomment %}
-            <a href={% url 'index' %}><img id="logo" src="{% static '/images/logo2.png' %}" alt="logo"></a>
+            <a href={% url 'index' %}><img id="logo" src="{% static 'images/logo2.png' %}" alt="logo"></a>
             <a href={% url 'index' %}><h1 id="logo-text">Wol<span id="offset">f Creek Bull</span>dogs</h1></a>
         </div>
         <nav>   
             <div id="nav1">  
-                <a href={% url 'sires' %}>Sires</a>
-                <p>|</p>
-                <a href={% url 'dams' %}>Dams</a>
-                <p>|</p>
-                <a href={% url 'nursery' %}>Nursery</a>
-                <p>|</p>
-                <a href={% url 'gallery' %}>Gallery</a>
+                <a class="nav-item" href={% url 'sires' %}>Sires</a>
+                <p class="nav-divider">|</p>
+                <a class="nav-item" href={% url 'dams' %}>Dams</a>
+                <p class="nav-divider">|</p>
+                <a class="nav-item" href={% url 'nursery' %}>Nursery</a>
+                <p class="nav-divider">|</p>
+                <a class="nav-item" href={% url 'gallery' %}>Gallery</a>
             </div>   
             <div id="nav2">                  
-                <a href={% url 'about_the_kennel' %}>About the Kennel</a>
-                <p>|</p>
-                <a href={% url 'contact_us' %}>Contact Us</a>
-                <p>|</p>
-                <a href={% url 'faq' %}>FAQ</a>
+                <a class="nav-item" href={% url 'about_the_kennel' %}>About the Kennel</a>
+                <p class="nav-divider">|</p>
+                <a class="nav-item" href={% url 'contact_us' %}>Contact Us</a>
+                <p class="nav-divider">|</p>
+                <a class="nav-item" href={% url 'faq' %}>FAQ</a>
+            </div>
+            <div id="phone-heading">
+                {% comment %} Javascript will input the heading here when it identifies a small screen {% endcomment %}
+                <h1>[[phoneHeading]]</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href={% url 'sires' %} class="nav-link">Sires</a>
+                </li>
+                <li class="nav-item">
+                    <a href={% url 'dams' %} class="nav-link">Dams</a>
+                </li>
+                <li class="nav-item">
+                    <a href={% url 'nursery' %} class="nav-link">Nursery</a>
+                </li>
+                <li class="nav-item">
+                    <a href={% url 'gallery' %} class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href={% url 'about_the_kennel' %} class="nav-link">About the Kennel</a>
+                </li>
+                <li class="nav-item">
+                    <a href={% url 'contact_us' %} class="nav-link">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href={% url 'faq' %} class="nav-link">FAQ</a>
+                </li>
+            </ul>
+            <div class="hamburger" @click="mobileMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </nav>
         <div id="block">
@@ -48,7 +80,7 @@
             <p>Wolf Creek Bulldogs</p>
             <p>Henryetta, Oklahoma</p>          
         </div>
-        <a href="#"><img src="{% static '/images/facebook-logo.png' %}" alt="Follow us on Facebook"></a>
+        <a href="#"><img src="{% static 'images/facebook-logo.png' %}" alt="Follow us on Facebook"></a>
     </footer>
 
 <!-- Import Ajax -->
