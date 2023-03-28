@@ -15,7 +15,7 @@ import os
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     from .config import django_key
