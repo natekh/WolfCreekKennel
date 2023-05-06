@@ -117,7 +117,7 @@
         display: flex;
         position: fixed;
         left: -150%;
-        top: 20rem;
+        top: 17.5rem;
         flex-direction: column;
         background-color: black;
         width: 100%;
@@ -229,14 +229,6 @@
         flex-direction: column;
         align-items: center;
     }
-
-    /* #contact-us-text {
-        text-align: justify;
-    }
-
-    #contact-us-text h1{
-        text-align: center;
-      } */
         
     #contact-us-form {
         font-size: large;
@@ -255,7 +247,7 @@
     #contact-us-form input {
         padding-block: .5rem;
         padding-inline: .5rem;
-        font-size: x-large;
+        font-size: large;
     }
 
     .form-textbox {
@@ -324,6 +316,10 @@
         font-size: x-small;
         padding: .5rem;
         padding-bottom: 1rem;
+    }
+
+    #footer-text p {
+        font-size: x-small;
     }
 
     #footer img {

@@ -152,6 +152,7 @@ const app = Vue.createApp({
             hamburger.classList.toggle("active")
             navMenu.classList.toggle("active")
             if (hamburger.classList.contains('active')) {
+                window.scrollTo(0,0)
                 body.style.overflow = "hidden"
             }else {
                 body.style.overflow = "visible"
@@ -220,6 +221,7 @@ const app = Vue.createApp({
             } 
             else {
                 document.getElementsByTagName('h1')[2].style.display = "none"
+                document.getElementsByTagName('nav')[0].style.marginTop = '1rem'
             }
         }
         
