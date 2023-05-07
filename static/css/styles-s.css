@@ -231,7 +231,7 @@
     }
         
     #contact-us-form {
-        font-size: large;
+        /* font-size: large; */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -244,15 +244,20 @@
         gap: 1rem;
     }
     
+    #contact-us-text {
+        margin-bottom: 1rem;
+    }
+
     #contact-us-form input {
         padding-block: .5rem;
-        padding-inline: .5rem;
+        padding-right: 1rem;
         font-size: large;
     }
 
     .form-textbox {
         width: 18em;
         height: 12em;
+        font-size: medium;
     }
     
     .form-name {

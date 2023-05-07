@@ -232,7 +232,7 @@ nav a:hover {
 } */
 
 #contact-us-form {
-    font-size: large;
+    /* font-size: large; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,7 +247,9 @@ nav a:hover {
 
 #contact-us-form input {
     padding-block: 1rem;
-    padding-inline: 3rem;
+    padding-right: 5.5rem;
+    padding-left: .5rem;
+    text-align: start;
     font-size: x-large;
 }
 
@@ -278,6 +280,7 @@ nav a:hover {
 
 #contact-us-form textarea {
     font-size: x-large;
+    padding-left: .5rem;
 }
 
 .image-text-side-by-side {
