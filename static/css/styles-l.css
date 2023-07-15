@@ -71,7 +71,7 @@ nav {
     margin-right: 11rem;
     margin-left: 11rem;
     margin-bottom: .5rem;
-    margin-block: 4rem;
+    margin-block: 2rem;
     padding-bottom: .5rem;
     border-bottom: solid white 1px;
     /* border-top: solid white 1px; */
@@ -97,6 +97,8 @@ nav a:hover {
     font-size: x-large;
     display: flex;
     flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
     align-items: center;
     text-align: center;
     background-color: #1c1c1d;
@@ -129,7 +131,7 @@ nav a:hover {
     padding-inline: 2rem;
     padding-block: 1rem;
     font-size: large;
-    border-radius: 5%;
+    border-radius: 0%;
 }
 
 #block {  
@@ -198,7 +200,7 @@ nav a:hover {
   color: white;
 }
 
-.card:hover, .current-card:hover, .upcoming-card:hover, .past-card:hover{
+.card:hover, .current-card:hover, .upcoming-card:hover, .past-card:hover, .individual-card:hover {
     cursor: pointer;
     transform: scale(1.05);
     box-shadow: 0px 1.5px 2.5px 0.5px rgba(0,255,255,0.7),
@@ -267,7 +269,7 @@ nav a:hover {
   width: 15rem;
   font-size: large;
   font-family: 'Poppins', sans-serif;
-  margin-block: 2rem;
+  /* margin-block: 2rem; */
 }
 
 .b-button {
@@ -315,8 +317,8 @@ nav a:hover {
 }
 
 .main-image {
-  width: 50rem;
-  margin-top: 4rem;
+  width: 40rem;
+  /* margin-top: 4rem; */
   box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
             1px 2px 4px 0px rgba(0,255,255,0.7),
             2px 4px 8px 0px rgba(0,255,255,0.7),
@@ -325,21 +327,30 @@ nav a:hover {
 
 .dog-detail-container {
   display: flex;
-  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  margin: 8rem 4rem 8rem 4rem;
 }
 
 .dog-detail-text {
-  margin: 4rem;
+  /* margin: 4rem; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  gap: 2rem;
   align-items: center;
   text-align: center;
   font-size: x-large;
 }
 
+.dog-detail-text h2, .dog-detail-text p, .dog-detail-text a {
+  padding: 0rem;
+  margin: 0rem;
+}
+
 .detail-name {
-  color: #0ff1f1
+  color: #0ff1f1;
 }
 
 .description {
@@ -354,12 +365,12 @@ nav a:hover {
   align-items: center;
   gap: 3rem;
   margin-inline: 12rem;
-  margin-block: 6rem;
+  margin-block: 8rem;
 }
 
 .image-carousel-image img{
   width: 15rem;
-  box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
+  box-shadow: 0px 1px 2px 0px c,
             1px 2px 4px 0px rgba(0,255,255,0.7),
             2px 4px 8px 0px rgba(0,255,255,0.7),
             2px 4px 16px 0px rgba(0,255,255,0.7);
@@ -374,6 +385,10 @@ nav a:hover {
   display: flex;
   justify-content: end;
   align-items: center;
+}
+
+#about-the-kennel-text h3 {
+  color: #0ff1f1;
 }
 
 #about-the-kennel-hero {
@@ -394,7 +409,11 @@ nav a:hover {
 }
 
 .faq {
-  margin-block: 2rem;
+  margin-block: 4rem;
+}
+
+.faq h3 {
+  color: #0ff1f1;
 }
 
 .subheader {

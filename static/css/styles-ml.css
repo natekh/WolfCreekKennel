@@ -1,0 +1,127 @@
+@media screen and (min-width: 1008px) and (max-width: 1500px) {
+
+    #logo {
+        width: 23rem;
+    }
+
+    nav {
+        margin-right: 7rem;
+        margin-left: 7rem;
+    }
+
+    nav a {
+        font-size: 21px;
+    }
+
+    nav p {
+        font-size: 15px;
+    }
+
+    #block {
+        font-size: 15px;
+    }
+
+    #index-heading h2 {
+        margin: 0rem 0rem 1rem 0rem;
+    }
+
+    #index-heading {
+        margin-bottom: 3.5rem;
+    }
+
+    .card-container, .individual-card-container {
+        margin-inline: 14rem;
+        padding-block: 3rem;
+        gap: 3rem;
+    }
+    
+    .card, .current-card, .upcoming-card, .past-card, .individual-card {
+        padding: 2rem;  
+    }
+    
+    .card img, .current-card img, .upcoming-card img, .past-card img, .individual-card img{
+        width: 12rem;
+    }
+    
+    .left-arrow, .right-arrow {
+        width: 2.5rem;
+    }
+
+    #newsletter {
+        font-size: 21px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #1c1c1d;
+        margin-top: 6.5rem;
+        padding: 2rem;
+        box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
+                1px 2px 4px 0px rgba(0,255,255,0.7),
+                2px 4px 8px 0px rgba(0,255,255,0.7),
+                2px 4px 16px 0px rgba(0,255,255,0.7);
+    }
+    
+    #newsletter h3 {
+        margin-bottom: 1rem;
+        padding: 0rem;
+    }
+    
+    #newsletter p {
+        margin: 0rem;
+        padding: 0rem;
+    }
+    
+    #newsletter-input-button {
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    #newsletter-input-button input, button {
+        padding-inline: 2rem;
+        padding-block: 1rem;
+        font-size: large;
+    }
+
+    .main-image {
+        width: 30rem;
+        box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
+                  1px 2px 4px 0px rgba(0,255,255,0.7),
+                  2px 4px 8px 0px rgba(0,255,255,0.7),
+                  2px 4px 16px 0px rgba(0,255,255,0.7);
+      }
+
+      .dog-detail-container {
+        gap: 5rem;
+      }
+      
+      .dog-detail-text {
+        font-size: 21px;
+      }
+      
+      .description {
+        margin-block: 4rem;
+        text-align: center;
+        font-size: x-large;
+      }
+    
+    .image-carousel-image img{
+        width: 14rem;
+    }
+
+    #footer {
+        margin-inline: 7rem;
+        font-size: 14.5px;
+    }
+
+    #about-the-kennel-text {
+        font-size: large;
+        margin-inline: 0rem;
+        margin-left: 6rem;
+    }
+
+    .faq {
+        font-size: large;
+    }
+    
+}

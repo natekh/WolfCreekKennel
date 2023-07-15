@@ -206,6 +206,7 @@ const app = Vue.createApp({
     },
     mounted(){   
         s = window.matchMedia("(max-width: 640px)")
+        ml = window.matchMedia("(min-width: 1008px) and (max-width: 1500px)")
         if (s.matches) {
             this.currentImageCarouselIndex = 0
             this.currentCarouselIndex = 0           
@@ -223,6 +224,11 @@ const app = Vue.createApp({
                 document.getElementsByTagName('h1')[2].style.display = "none"
                 document.getElementsByTagName('nav')[0].style.marginTop = '1rem'
             }
+        }
+
+        if (ml.matches) {
+            this.currentImageCarouselIndex = 2
+            this.imageCarouselLimit = 2
         }
         
         this.carouselItems = document.querySelectorAll('.card')
